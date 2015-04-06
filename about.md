@@ -4,8 +4,14 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+Hey there! My name is Didik, I’m an IT student, web & Android developer, Linux enthusiast, book lover and gamer.
+<br>
+<br>
 
-You can find the source code for the Jekyll new theme at: [github.com/jglovier/jekyll-new](https://github.com/jglovier/jekyll-new)
+#### What I do
 
-You can find the source code for Jekyll at [github.com/jekyll/jekyll](https://github.com/jekyll/jekyll)
+I try to make the IT world becomes a little more fun with writing good documentations.
+
+Any question or feedback are always welcome, so feel free to contact me.
+
+Thanks for Reading.
