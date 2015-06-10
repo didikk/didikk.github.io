@@ -2,8 +2,8 @@
 layout:     post
 title:      Cara Download Semua Track dari Account SoundCloud
 date:       2015-06-10 7:56:20
-categories: Tutorial PHP
-tags:		facebook api
+categories: Tutorial
+tags:		download all track soundcloud
 ---
 
 Jadi ceritanya saya iseng-iseng mengunjungi SoundCloud-nya [Suara Cerita](https://soundcloud.com/suaracerita). Setelah saya dengarkan beberapa track ternyata isinya bagus. Oleh karena itu saya ingin menyimpannya. Tapi karena jumlah track-nya 80 lebih, maka tidak mungkin saya melakukannya secara manual. Pasti melelahkan.
