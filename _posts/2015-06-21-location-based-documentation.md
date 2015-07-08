@@ -43,7 +43,7 @@ Agar kamu bisa menggunakan aplikasi di jaringan lokal / gak perlu internet, ada 
 
 ####Setup Android App
 
-1. Sebelum membuka eclipse, pastikan kamu sudah men-sharing wifimu. Caranya bisa dilihat [di sini](http://didikk.github.io).
+1. Sebelum membuka eclipse, pastikan kamu sudah men-sharing wifimu. Caranya bisa dilihat [di sini](http://www.7tutorials.com/how-turn-your-windows-81-laptop-wifi-access-point).
 
 2. Kemudian kita perli mengetahui IP Address laptop. Buka cmd dan ketikkan "ipconfig", cari ip dari wifimu. Biasanya kalau sharing dengan netsh IP-nya jadi 192.168.137.1.
 
