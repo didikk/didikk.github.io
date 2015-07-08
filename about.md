@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Hey there! My name is Didik, I’m an IT student, web & Android developer, Linux enthusiast, book lover and gamer.
+Hey there! My name is Didik, I’m an IT student, software developer, reader, blogger and Linux enthusiast.
 <br>
 <br>
 
