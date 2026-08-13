@@ -1,0 +1,59 @@
+---
+import { experience } from "../data/site";
+---
+
+<section
+  class="section-y border-y border-surface-variant bg-surface-container-low"
+  id="experience"
+>
+  <div class="page-container">
+    <div class="mb-md max-w-reading-width">
+      <h2
+        class="mb-base font-section-heading text-section-heading font-bold text-primary"
+      >
+        Experience
+      </h2>
+    </div>
+    <div
+      class="relative flex max-w-reading-width flex-col gap-8 border-l-2 border-surface-variant pl-md"
+    >
+      {
+        experience.map((job) => (
+          <div class="relative">
+            <div
+              class:list={[
+                "absolute -left-8.75 top-2 size-4 rounded-full ring-4 ring-surface-container-low",
+                job.current ? "bg-accent" : "bg-surface-variant",
+              ]}
+            />
+            <h3
+              class:list={[
+                "mb-xs font-project-heading font-bold text-primary",
+                job.compact
+                  ? "text-[20px] leading-tight"
+                  : "text-project-heading",
+              ]}
+            >
+              {job.company}
+            </h3>
+            <p
+              class:list={[
+                "font-metadata text-metadata text-outline",
+                job.summary ? "mb-sm" : "",
+              ]}
+            >
+              {job.role}
+              <span class="mx-base">|</span>
+              {job.period}
+            </p>
+            {job.summary && (
+              <p class="font-body-md text-body-md text-on-surface-variant">
+                {job.summary}
+              </p>
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

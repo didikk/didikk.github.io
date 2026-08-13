@@ -1,0 +1,60 @@
+---
+import { site } from "../data/site";
+---
+
+<section
+  class="section-y border-t border-surface-variant bg-surface-container-low"
+  id="contact"
+>
+  <div class="page-container">
+    <div class="max-w-reading-width">
+      <h2
+        class="mb-md font-hero-display-mobile text-hero-display-mobile font-extrabold text-primary md:text-[48px]"
+      >
+        Let's build something useful.
+      </h2>
+      <p class="mb-md font-body-lg text-body-lg text-on-surface-variant">
+        Interested in working together or discussing a software engineering
+        opportunity?
+      </p>
+      <div class="flex flex-wrap gap-base">
+        {
+          site.email ? (
+            <a
+              class="inline-flex items-center justify-center rounded bg-primary px-md py-4 font-metadata text-metadata text-on-primary transition-colors duration-200 hover:bg-accent"
+              href={`mailto:${site.email}`}
+            >
+              Email me
+            </a>
+          ) : (
+            <span class="inline-flex items-center justify-center rounded bg-primary px-md py-4 font-metadata text-metadata text-on-primary">
+              Email me
+            </span>
+          )
+        }
+        {
+          site.linkedin ? (
+            <a
+              class="inline-flex items-center justify-center rounded border border-outline-variant bg-surface-container-lowest px-md py-4 font-metadata text-metadata text-primary transition-colors duration-200 hover:border-accent hover:text-accent"
+              href={site.linkedin}
+            >
+              LinkedIn
+            </a>
+          ) : (
+            <span class="inline-flex items-center justify-center rounded border border-outline-variant bg-surface-container-lowest px-md py-4 font-metadata text-metadata text-primary">
+              LinkedIn
+            </span>
+          )
+        }
+        <a
+          class="inline-flex items-center justify-center rounded border border-outline-variant bg-surface-container-lowest px-md py-4 font-metadata text-metadata text-primary transition-colors duration-200 hover:border-accent hover:text-accent"
+          href={site.github}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

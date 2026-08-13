@@ -1,0 +1,56 @@
+---
+import { site } from "../data/site";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="w-full border-t border-surface-variant bg-surface-container-lowest">
+  <div
+    class="page-container flex flex-col items-center justify-between py-lg md:flex-row"
+  >
+    <p class="mb-md font-metadata text-metadata text-outline md:mb-0">
+      © {year} {site.name}. Built with precision.
+    </p>
+    <div class="flex space-x-md">
+      {
+        site.linkedin ? (
+          <a
+            class="font-label-caps text-label-caps tracking-widest text-on-surface-variant transition-colors duration-200 hover:text-accent"
+            href={site.linkedin}
+          >
+            LinkedIn
+          </a>
+        ) : (
+          <span class="font-label-caps text-label-caps tracking-widest text-on-surface-variant">
+            LinkedIn
+          </span>
+        )
+      }
+      <a
+        class="font-label-caps text-label-caps tracking-widest text-on-surface-variant transition-colors duration-200 hover:text-accent"
+        href={site.github}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        GitHub
+      </a>
+      {
+        site.email ? (
+          <a
+            class="font-label-caps text-label-caps tracking-widest text-on-surface-variant transition-colors duration-200 hover:text-accent"
+            href={`mailto:${site.email}`}
+          >
+            Email
+          </a>
+        ) : (
+          <a
+            class="font-label-caps text-label-caps tracking-widest text-on-surface-variant transition-colors duration-200 hover:text-accent"
+            href="#contact"
+          >
+            Email
+          </a>
+        )
+      }
+    </div>
+  </div>
+</footer>

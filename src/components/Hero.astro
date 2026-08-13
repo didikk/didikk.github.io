@@ -1,0 +1,48 @@
+---
+import { site } from "../data/site";
+---
+
+<section
+  class="relative w-full overflow-hidden border-b border-surface-variant bg-surface-container-low pb-section-lg pt-section"
+>
+  <div class="bg-grid-pattern absolute inset-0 opacity-15"></div>
+  <div
+    class="absolute inset-0 bg-linear-to-b from-transparent to-surface-container-low"
+  >
+  </div>
+  <div class="page-container relative z-10">
+    <div class="max-w-reading-width">
+      <p
+        class="mb-base font-label-caps text-label-caps uppercase tracking-widest text-accent"
+      >
+        Mobile Developer · Software Engineer
+      </p>
+      <h1
+        class="mb-md font-hero-display-mobile text-hero-display-mobile font-extrabold text-primary md:font-hero-display md:text-hero-display"
+      >
+        Building reliable mobile products and maintainable software.
+      </h1>
+      <p class="mb-md font-body-lg text-body-lg text-on-surface-variant">
+        I am Didik Ismawanto, a Senior Mobile Developer with over 10 years of
+        experience. I specialize in building, optimizing, and maintaining
+        large-scale mobile applications across React Native, Android, and
+        Flutter. My focus is on technical architecture, performance profiling,
+        and leading engineering teams to deliver stable, high-quality products.
+      </p>
+      <div class="flex flex-col gap-base sm:flex-row">
+        <a
+          class="inline-flex items-center justify-center rounded bg-primary px-md py-4 font-metadata text-metadata text-on-primary transition-colors duration-200 hover:bg-accent"
+          href="#work"
+        >
+          View selected work
+        </a>
+        <a
+          class="inline-flex items-center justify-center rounded border border-outline-variant bg-surface px-md py-4 font-metadata text-metadata text-primary transition-colors duration-200 hover:border-accent hover:text-accent"
+          href={site.cv}
+        >
+          Download CV
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #f8f9fa;
+  --color-surface: #f8f9fa;
+  --color-surface-card: #ffffff;
+  --color-surface-dim: #d9dadb;
+  --color-surface-container: #edeeef;
+  --color-surface-container-low: #f3f4f6;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-variant: #e1e3e4;
+  --color-on-background: #191c1d;
+  --color-on-surface: #191c1d;
+  --color-on-surface-variant: #45464c;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #7d8497;
+  --color-primary: #000000;
+  --color-secondary: #585f6c;
+  --color-outline: #76777d;
+  --color-outline-variant: #c6c6cd;
+  --color-border-subtle: #e5e7eb;
+  --color-accent: #3b82f6;
+
+  --font-hero-display: "Manrope", ui-sans-serif, sans-serif;
+  --font-hero-display-mobile: "Manrope", ui-sans-serif, sans-serif;
+  --font-section-heading: "Manrope", ui-sans-serif, sans-serif;
+  --font-project-heading: "Manrope", ui-sans-serif, sans-serif;
+  --font-body-lg: "Inter", ui-sans-serif, sans-serif;
+  --font-body-md: "Inter", ui-sans-serif, sans-serif;
+  --font-label-caps: "Inter", ui-sans-serif, sans-serif;
+  --font-metadata: "Inter", ui-sans-serif, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, sans-serif;
+
+  --text-hero-display: 72px;
+  --text-hero-display--line-height: 1.1;
+  --text-hero-display--letter-spacing: -0.04em;
+  --text-hero-display--font-weight: 800;
+
+  --text-hero-display-mobile: 44px;
+  --text-hero-display-mobile--line-height: 1.1;
+  --text-hero-display-mobile--letter-spacing: -0.03em;
+  --text-hero-display-mobile--font-weight: 800;
+
+  --text-section-heading: 36px;
+  --text-section-heading--line-height: 1.2;
+  --text-section-heading--letter-spacing: -0.02em;
+  --text-section-heading--font-weight: 700;
+
+  --text-project-heading: 24px;
+  --text-project-heading--line-height: 1.4;
+  --text-project-heading--letter-spacing: -0.01em;
+  --text-project-heading--font-weight: 600;
+
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 1.75;
+  --text-body-lg--letter-spacing: -0.011em;
+  --text-body-lg--font-weight: 400;
+
+  --text-body-md: 16px;
+  --text-body-md--line-height: 1.6;
+  --text-body-md--letter-spacing: -0.011em;
+  --text-body-md--font-weight: 400;
+
+  --text-label-caps: 12px;
+  --text-label-caps--line-height: 1;
+  --text-label-caps--letter-spacing: 0.1em;
+  --text-label-caps--font-weight: 600;
+
+  --text-metadata: 14px;
+  --text-metadata--line-height: 1.4;
+  --text-metadata--letter-spacing: 0.02em;
+  --text-metadata--font-weight: 500;
+
+  --spacing-xs: 4px;
+  --spacing-base: 8px;
+  --spacing-sm: 12px;
+  --spacing-md: 24px;
+  --spacing-lg: 48px;
+  --spacing-xl: 96px;
+  --spacing-section: 64px;
+  --spacing-section-lg: 128px;
+  --spacing-max-width: 1200px;
+  --spacing-reading-width: 760px;
+
+  --max-width-sm: 24rem;
+  --max-width-md: 28rem;
+  --max-width-lg: 32rem;
+
+  --radius: 0.25rem;
+  --radius-sm: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+}
+
+@utility page-container {
+  @apply mx-auto max-w-max-width px-5 md:px-8 lg:px-lg;
+}
+
+@utility section-y {
+  @apply py-section md:py-section-lg;
+}
+
+.bg-grid-pattern {
+  background-image: radial-gradient(var(--color-outline-variant) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}

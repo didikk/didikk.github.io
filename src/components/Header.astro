@@ -1,0 +1,140 @@
+---
+import { nav } from "../data/site";
+---
+
+<header
+  class="fixed top-0 z-50 w-full border-b border-surface-variant bg-surface/90 shadow-[0px_4px_24px_rgba(0,0,0,0.04)] backdrop-blur-md"
+>
+  <nav
+    class="page-container flex h-18 items-center justify-between py-base"
+    aria-label="Primary"
+  >
+    <a
+      class="font-project-heading text-project-heading font-bold text-primary"
+      href="/"
+    >
+      Didik Ismawanto
+    </a>
+
+    <div class="hidden items-center space-x-md font-body-md text-body-md md:flex">
+      {
+        nav.map((item) => (
+          <a
+            class="nav-link relative text-on-surface-variant transition-colors duration-200 hover:text-accent"
+            href={item.href}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </div>
+
+    <details class="relative md:hidden">
+      <summary
+        class="cursor-pointer list-none font-metadata text-metadata text-on-surface-variant hover:text-accent"
+      >
+        Menu
+      </summary>
+      <div
+        class="absolute right-0 mt-sm w-48 border border-border-subtle bg-surface-card p-md shadow-[0px_4px_24px_rgba(0,0,0,0.04)]"
+      >
+        <div class="flex flex-col gap-sm">
+          {
+            nav.map((item) => (
+              <a
+                class="nav-link font-body-md text-body-md text-on-surface-variant transition-colors duration-200 hover:text-accent"
+                href={item.href}
+              >
+                {item.label}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </details>
+  </nav>
+</header>
+
+<style>
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .nav-link.is-active {
+    color: var(--color-accent);
+  }
+
+  nav[aria-label="Primary"] > div .nav-link.is-active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -10px;
+    height: 2px;
+    background: var(--color-accent);
+  }
+</style>
+
+<script>
+  const links = [...document.querySelectorAll<HTMLAnchorElement>(".nav-link")];
+  const sectionIds = [
+    ...new Set(
+      links
+        .map((link) => link.getAttribute("href"))
+        .filter((href): href is string => !!href?.startsWith("#"))
+        .map((href) => href.slice(1)),
+    ),
+  ];
+
+  function setActive(id: string) {
+    links.forEach((link) => {
+      const isActive = link.getAttribute("href") === `#${id}`;
+      link.classList.toggle("is-active", isActive);
+      if (isActive) {
+        link.setAttribute("aria-current", "true");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  }
+
+  function updateActive() {
+    const offset = 104;
+    const lastId = sectionIds.at(-1) ?? "";
+    const last = document.getElementById(lastId);
+    const lastTop = last?.getBoundingClientRect().top ?? Infinity;
+    const scrolledToBottom =
+      window.innerHeight + window.scrollY >=
+      document.documentElement.scrollHeight - 8;
+
+    if (scrolledToBottom || lastTop <= window.innerHeight * 0.55) {
+      setActive(lastId);
+      return;
+    }
+
+    const first = document.getElementById(sectionIds[0]);
+    if (first && first.getBoundingClientRect().top > offset + 40) {
+      setActive("");
+      return;
+    }
+
+    let current = sectionIds[0] ?? "";
+    for (const id of sectionIds) {
+      const section = document.getElementById(id);
+      if (section && section.getBoundingClientRect().top <= offset) {
+        current = id;
+      }
+    }
+    setActive(current);
+  }
+
+  document.querySelectorAll("header details a").forEach((link) => {
+    link.addEventListener("click", () => {
+      link.closest("details")?.removeAttribute("open");
+    });
+  });
+
+  window.addEventListener("scroll", updateActive, { passive: true });
+  window.addEventListener("hashchange", updateActive);
+  updateActive();
+</script>

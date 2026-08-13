@@ -1,0 +1,83 @@
+---
+import type { Project } from "../data/types";
+import AppStoreIcon from "./icons/AppStoreIcon.astro";
+import PlayStoreIcon from "./icons/PlayStoreIcon.astro";
+
+type Props = Project;
+
+const { category, title, description, tags, image, imageAlt, playStore, appStore } =
+  Astro.props;
+---
+
+<article
+  class="group flex h-full flex-col overflow-hidden rounded border border-border-subtle bg-surface-card"
+>
+  <!--
+  <div
+    class="flex h-52 w-full items-center justify-center overflow-hidden border-b border-border-subtle bg-surface-container-low"
+  >
+    <img
+      class="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+      src={image}
+      alt={imageAlt}
+      loading="lazy"
+    />
+  </div>
+  -->
+  <div class="flex grow flex-col p-8">
+    <div class="mb-md">
+      <span
+        class="mb-base block font-label-caps text-label-caps uppercase text-accent"
+      >
+        {category}
+      </span>
+      <h3 class="mb-xs font-project-heading text-project-heading text-primary">
+        {title}
+      </h3>
+      <p class="font-body-md text-body-md text-secondary">{description}</p>
+    </div>
+    <div class="mb-lg">
+      <div class="flex flex-wrap gap-xs">
+        {
+          tags.map((tag) => (
+            <span class="rounded-sm bg-surface-container px-sm py-xs font-label-caps text-label-caps text-on-surface-variant">
+              {tag}
+            </span>
+          ))
+        }
+      </div>
+    </div>
+    {
+      (playStore || appStore) && (
+        <div class="mt-auto flex flex-wrap items-center gap-md">
+          {playStore && (
+            <a
+              class="inline-flex items-center gap-xs opacity-90 transition-opacity duration-200 hover:opacity-100"
+              href={playStore}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <PlayStoreIcon />
+              <span class="font-label-caps text-label-caps text-accent">
+                Play Store
+              </span>
+            </a>
+          )}
+          {appStore && (
+            <a
+              class="inline-flex items-center gap-xs opacity-90 transition-opacity duration-200 hover:opacity-100"
+              href={appStore}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <AppStoreIcon />
+              <span class="font-label-caps text-label-caps text-accent">
+                App Store
+              </span>
+            </a>
+          )}
+        </div>
+      )
+    }
+  </div>
+</article>

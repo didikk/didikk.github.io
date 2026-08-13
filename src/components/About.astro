@@ -1,0 +1,31 @@
+---
+import { about } from "../data/site";
+---
+
+<section class="page-container section-y" id="about">
+  <div class="max-w-reading-width">
+    <h2
+      class="mb-md font-section-heading text-section-heading font-bold text-primary"
+    >
+      About
+    </h2>
+    <div class="mb-md space-y-md font-body-lg text-body-lg text-on-surface-variant">
+      {about.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+    </div>
+    <div class="mt-md border-t border-surface-variant pt-md">
+      <h3
+        class="mb-base font-metadata text-metadata font-semibold uppercase tracking-widest text-accent"
+      >
+        Education
+      </h3>
+      <p
+        class="mb-xs font-project-heading text-[20px] leading-tight font-bold text-primary"
+      >
+        {about.education.school}
+      </p>
+      <p class="font-body-md text-body-md text-outline">
+        {about.education.detail}
+      </p>
+    </div>
+  </div>
+</section>

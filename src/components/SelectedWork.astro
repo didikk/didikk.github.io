@@ -1,0 +1,21 @@
+---
+import { projects } from "../data/site";
+import ProjectCard from "./ProjectCard.astro";
+---
+
+<section class="page-container section-y" id="work">
+  <div class="mb-md max-w-reading-width">
+    <h2
+      class="mb-base font-section-heading text-section-heading font-bold text-primary"
+    >
+      Selected Work
+    </h2>
+    <p class="font-body-md text-body-md text-on-surface-variant">
+      A selection of my engineering work across logistics, agriculture, B2B
+      procurement, and media.
+    </p>
+  </div>
+  <div class="grid grid-cols-1 gap-md md:grid-cols-2">
+    {projects.map((project) => <ProjectCard {...project} />)}
+  </div>
+</section>

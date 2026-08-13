@@ -1,0 +1,29 @@
+---
+import { principles } from "../data/site";
+---
+
+<section class="section-y bg-primary text-on-primary">
+  <div class="page-container">
+    <div class="mb-md max-w-reading-width">
+      <h2
+        class="mb-base font-section-heading text-section-heading font-bold text-on-primary"
+      >
+        Engineering Principles
+      </h2>
+    </div>
+    <div class="grid grid-cols-1 gap-md md:grid-cols-2">
+      {
+        principles.map((principle) => (
+          <div class="border-l-2 border-accent pl-4">
+            <h3 class="mb-base font-project-heading text-[20px] leading-tight font-semibold text-on-primary">
+              {principle.title}
+            </h3>
+            <p class="font-body-md text-body-md text-on-primary-container">
+              {principle.body}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
