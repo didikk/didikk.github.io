@@ -1,33 +1,24 @@
 ---
 import { site } from "../data/site";
-
-const year = new Date().getFullYear();
 ---
 
-<footer class="w-full border-t border-surface-variant bg-surface-container-lowest">
+<footer class="w-full bg-surface-card py-space-xl">
   <div
-    class="page-container flex flex-col items-center justify-between py-lg md:flex-row"
+    class="page-container flex flex-col items-center justify-between gap-gutter md:flex-row"
   >
-    <p class="mb-md font-metadata text-metadata text-outline md:mb-0">
-      © {year} {site.name}. Built with precision.
-    </p>
-    <div class="flex space-x-md">
-      {
-        site.linkedin ? (
-          <a
-            class="font-label-caps text-label-caps tracking-widest text-on-surface-variant transition-colors duration-200 hover:text-accent"
-            href={site.linkedin}
-          >
-            LinkedIn
-          </a>
-        ) : (
-          <span class="font-label-caps text-label-caps tracking-widest text-on-surface-variant">
-            LinkedIn
-          </span>
-        )
-      }
+    <div class="flex flex-col items-center gap-space-xs md:items-start">
+      <span class="font-body text-body-sm text-on-surface">
+        © 2026 {site.name}.
+      </span>
+      <span
+        class="font-eyebrow text-eyebrow tracking-wide text-text-muted uppercase"
+      >
+        iOS & Android Architecture • Kotlin • Swift
+      </span>
+    </div>
+    <div class="flex items-center gap-space-lg">
       <a
-        class="font-label-caps text-label-caps tracking-widest text-on-surface-variant transition-colors duration-200 hover:text-accent"
+        class="font-label text-label-code text-on-surface-variant transition-colors hover:text-secondary"
         href={site.github}
         target="_blank"
         rel="noopener noreferrer"
@@ -35,17 +26,20 @@ const year = new Date().getFullYear();
         GitHub
       </a>
       {
-        site.email ? (
+        site.linkedin && (
           <a
-            class="font-label-caps text-label-caps tracking-widest text-on-surface-variant transition-colors duration-200 hover:text-accent"
-            href={`mailto:${site.email}`}
+            class="font-label text-label-code text-on-surface-variant transition-colors hover:text-secondary"
+            href={site.linkedin}
           >
-            Email
+            LinkedIn
           </a>
-        ) : (
+        )
+      }
+      {
+        site.email && (
           <a
-            class="font-label-caps text-label-caps tracking-widest text-on-surface-variant transition-colors duration-200 hover:text-accent"
-            href="#contact"
+            class="font-label text-label-code text-on-surface-variant transition-colors hover:text-secondary"
+            href={`mailto:${site.email}`}
           >
             Email
           </a>

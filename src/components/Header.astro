@@ -1,58 +1,91 @@
 ---
-import { nav } from "../data/site";
+import { nav, site } from "../data/site";
 ---
 
 <header
-  class="fixed top-0 z-50 w-full border-b border-surface-variant bg-surface/90 shadow-[0px_4px_24px_rgba(0,0,0,0.04)] backdrop-blur-md"
+  class="fixed top-0 right-0 left-0 z-50 bg-surface-card shadow-[0_1px_8px_rgba(0,0,0,0.04)] dark:shadow-[0_1px_8px_rgba(0,0,0,0.35)]"
 >
-  <nav
-    class="page-container flex h-18 items-center justify-between py-base"
-    aria-label="Primary"
+  <div
+    class="page-container flex h-16 items-center justify-between gap-gutter"
   >
-    <a
-      class="font-project-heading text-project-heading font-bold text-primary"
-      href="/"
-    >
-      Didik Ismawanto
+    <a class="group flex flex-col justify-center" href="/">
+      <span
+        class="font-headline text-headline-sm text-on-surface transition-colors group-hover:text-secondary"
+      >
+        {site.name}
+      </span>
+      <span
+        class="font-eyebrow text-eyebrow tracking-wider text-text-muted uppercase"
+      >
+        {site.role}
+      </span>
     </a>
 
-    <div class="hidden items-center space-x-md font-body-md text-body-md md:flex">
+    <nav class="hidden items-center gap-space-lg md:flex" aria-label="Primary">
       {
         nav.map((item) => (
           <a
-            class="nav-link relative text-on-surface-variant transition-colors duration-200 hover:text-accent"
+            class="nav-link font-body text-body-sm text-on-surface-variant transition-colors hover:text-on-surface"
             href={item.href}
           >
             {item.label}
           </a>
         ))
       }
-    </div>
+    </nav>
 
-    <details class="relative md:hidden">
-      <summary
-        class="cursor-pointer list-none font-metadata text-metadata text-on-surface-variant hover:text-accent"
+    <div class="flex items-center gap-space-sm">
+      <button
+        type="button"
+        id="theme-toggle"
+        class="flex size-9 items-center justify-center rounded-lg bg-badge text-on-surface transition-colors hover:bg-surface-container dark:border dark:border-border-strong dark:bg-surface-elevated dark:text-text-secondary dark:hover:border-secondary dark:hover:text-secondary"
+        aria-label="Toggle color mode"
       >
-        Menu
-      </summary>
-      <div
-        class="absolute right-0 mt-sm w-48 border border-border-subtle bg-surface-card p-md shadow-[0px_4px_24px_rgba(0,0,0,0.04)]"
+        <span
+          class="material-symbols-outlined text-[20px]"
+          id="theme-toggle-icon"
+          aria-hidden="true">light_mode</span
+        >
+      </button>
+      <a
+        class="hidden items-center gap-space-xs rounded-lg bg-primary px-space-md py-space-xs font-body text-body-sm font-medium text-on-primary transition-all hover:opacity-90 sm:inline-flex"
+        href={site.cv}
       >
-        <div class="flex flex-col gap-sm">
-          {
-            nav.map((item) => (
-              <a
-                class="nav-link font-body-md text-body-md text-on-surface-variant transition-colors duration-200 hover:text-accent"
-                href={item.href}
-              >
-                {item.label}
-              </a>
-            ))
-          }
+        <span class="material-symbols-outlined text-[18px]">download</span>
+        Download CV
+      </a>
+
+      <details class="relative md:hidden">
+        <summary
+          class="cursor-pointer list-none rounded-lg border border-border-subtle px-3 py-2 font-body text-body-sm text-on-surface-variant"
+        >
+          Menu
+        </summary>
+        <div
+          class="absolute right-0 mt-space-sm w-48 rounded-xl border border-border-subtle bg-surface-card p-space-md shadow-sm"
+        >
+          <div class="flex flex-col gap-space-sm">
+            {
+              nav.map((item) => (
+                <a
+                  class="nav-link font-body text-body-sm text-on-surface-variant hover:text-on-surface"
+                  href={item.href}
+                >
+                  {item.label}
+                </a>
+              ))
+            }
+            <a
+              class="font-body text-body-sm text-on-surface-variant hover:text-on-surface"
+              href={site.cv}
+            >
+              Download CV
+            </a>
+          </div>
         </div>
-      </div>
-    </details>
-  </nav>
+      </details>
+    </div>
+  </div>
 </header>
 
 <style>
@@ -61,21 +94,37 @@ import { nav } from "../data/site";
   }
 
   .nav-link.is-active {
-    color: var(--color-accent);
-  }
-
-  nav[aria-label="Primary"] > div .nav-link.is-active::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -10px;
-    height: 2px;
-    background: var(--color-accent);
+    color: var(--color-secondary);
+    font-weight: 600;
   }
 </style>
 
 <script>
+  const THEME_KEY = "didik_theme";
+  const themeIcon = document.getElementById("theme-toggle-icon");
+
+  function isDark() {
+    return document.documentElement.classList.contains("dark");
+  }
+
+  function syncThemeIcon() {
+    if (themeIcon) {
+      themeIcon.textContent = isDark() ? "dark_mode" : "light_mode";
+    }
+  }
+
+  function setTheme(dark: boolean) {
+    document.documentElement.classList.toggle("dark", dark);
+    localStorage.setItem(THEME_KEY, dark ? "dark" : "light");
+    syncThemeIcon();
+  }
+
+  syncThemeIcon();
+
+  document.getElementById("theme-toggle")?.addEventListener("click", () => {
+    setTheme(!isDark());
+  });
+
   const links = [...document.querySelectorAll<HTMLAnchorElement>(".nav-link")];
   const sectionIds = [
     ...new Set(
@@ -90,16 +139,11 @@ import { nav } from "../data/site";
     links.forEach((link) => {
       const isActive = link.getAttribute("href") === `#${id}`;
       link.classList.toggle("is-active", isActive);
-      if (isActive) {
-        link.setAttribute("aria-current", "true");
-      } else {
-        link.removeAttribute("aria-current");
-      }
     });
   }
 
   function updateActive() {
-    const offset = 104;
+    const offset = 96;
     const lastId = sectionIds.at(-1) ?? "";
     const last = document.getElementById(lastId);
     const lastTop = last?.getBoundingClientRect().top ?? Infinity;

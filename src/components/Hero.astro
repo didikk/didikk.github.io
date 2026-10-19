@@ -1,46 +1,125 @@
 ---
-import { site } from "../data/site";
+import { hero, site } from "../data/site";
 ---
 
-<section
-  class="relative w-full overflow-hidden border-b border-surface-variant bg-surface-container-low pb-section-lg pt-section"
->
-  <div class="bg-grid-pattern absolute inset-0 opacity-15"></div>
+<section class="relative w-full pt-12 pb-8 md:pt-16 md:pb-10">
   <div
-    class="absolute inset-0 bg-linear-to-b from-transparent to-surface-container-low"
+    class="pointer-events-none absolute top-12 left-1/2 -z-10 h-64 w-3/4 max-w-3xl -translate-x-1/2 rounded-full bg-surface-container-high/40 blur-3xl dark:bg-surface-elevated/20"
   >
   </div>
-  <div class="page-container relative z-10">
-    <div class="max-w-reading-width">
-      <p
-        class="mb-base font-label-caps text-label-caps uppercase tracking-widest text-accent"
+  <div
+    class="page-container relative flex w-full flex-col items-start gap-space-md md:gap-space-lg"
+  >
+    <div class="flex flex-wrap items-center gap-space-sm md:gap-space-md">
+      <div
+        class="inline-flex items-center gap-2 rounded-full bg-surface-card px-3 py-1 shadow-sm dark:bg-surface-elevated"
       >
-        Mobile Developer · Software Engineer
-      </p>
-      <h1
-        class="mb-md font-hero-display-mobile text-hero-display-mobile font-extrabold text-primary md:font-hero-display md:text-hero-display"
+        <span class="relative flex h-2 w-2">
+          <span
+            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75"
+          ></span>
+          <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"
+          ></span>
+        </span>
+        <span
+          class="font-eyebrow text-eyebrow tracking-wider text-on-surface uppercase"
+        >
+          {site.availability}
+        </span>
+      </div>
+      <span class="font-label text-label-code text-text-muted">·</span>
+      <span
+        class="font-eyebrow text-eyebrow tracking-widest text-text-secondary uppercase"
       >
-        Building reliable mobile products and maintainable software.
-      </h1>
-      <p class="mb-md font-body-lg text-body-lg text-on-surface-variant">
-        I am Didik Ismawanto, a Senior Mobile Developer with over 10 years of
-        experience. I specialize in building, optimizing, and maintaining
-        large-scale mobile applications across React Native, Android, and
-        Flutter. My focus is on technical architecture, performance profiling,
-        and leading engineering teams to deliver stable, high-quality products.
-      </p>
-      <div class="flex flex-col gap-base sm:flex-row">
+        {hero.eyebrow}
+      </span>
+    </div>
+
+    <h1
+      class="w-full max-w-4xl font-display text-headline-lg leading-[1.08] tracking-tight text-on-surface md:text-display"
+    >
+      {hero.headline}
+    </h1>
+
+    <p class="w-full max-w-3xl font-body text-body-lg text-text-secondary">
+      {hero.body}
+    </p>
+
+    <div
+      class="mt-1 flex w-full items-center overflow-x-auto rounded-xl bg-surface-container-low px-4 py-2.5 text-on-surface shadow-sm dark:bg-surface-elevated/60"
+    >
+      <div
+        class="flex items-center gap-3 font-label text-label-code whitespace-nowrap"
+      >
+        {
+          hero.chips.map((chip, i) => (
+            <>
+              {i > 0 ? <span class="text-text-muted">/</span> : null}
+              <span
+                class={
+                  i === 0
+                    ? "font-semibold text-secondary"
+                    : "text-on-surface"
+                }
+              >
+                {chip}
+              </span>
+            </>
+          ))
+        }
+        <span class="text-text-muted">/</span>
+        <span class="flex items-center gap-1 text-text-secondary">
+          <span class="material-symbols-outlined text-[16px]">location_on</span>
+          {hero.location}
+        </span>
+      </div>
+    </div>
+
+    <div class="flex w-full flex-wrap items-center gap-space-sm pt-2">
+      <a
+        class="inline-flex items-center gap-2 rounded-xl bg-primary px-space-lg py-3 font-body text-body-sm font-medium text-on-primary shadow-sm transition-all hover:opacity-90"
+        href="#work"
+      >
+        {hero.primaryCta}
+        <span class="material-symbols-outlined text-[18px]">arrow_downward</span>
+      </a>
+      <a
+        class="inline-flex items-center gap-2 rounded-xl bg-surface-card px-space-lg py-3 font-body text-body-sm font-medium text-on-surface shadow-sm transition-all hover:bg-surface-container-low dark:bg-surface-elevated dark:hover:bg-surface-card"
+        href="#skills"
+      >
+        {hero.secondaryCta}
+        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+      </a>
+      <div class="flex items-center gap-2 pl-2">
+        {
+          site.linkedin && (
+            <a
+              class="flex size-10 items-center justify-center rounded-xl bg-surface-card text-on-surface shadow-sm transition-colors hover:text-secondary dark:bg-surface-elevated"
+              href={site.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="LinkedIn"
+            >
+              <svg class="size-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.44a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 0 0 0-3.26Z" />
+              </svg>
+            </a>
+          )
+        }
         <a
-          class="inline-flex items-center justify-center rounded bg-primary px-md py-4 font-metadata text-metadata text-on-primary transition-colors duration-200 hover:bg-accent"
-          href="#work"
+          class="flex size-10 items-center justify-center rounded-xl bg-surface-card text-on-surface shadow-sm transition-colors hover:text-secondary dark:bg-surface-elevated"
+          href={site.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          title="GitHub"
         >
-          View selected work
-        </a>
-        <a
-          class="inline-flex items-center justify-center rounded border border-outline-variant bg-surface px-md py-4 font-metadata text-metadata text-primary transition-colors duration-200 hover:border-accent hover:text-accent"
-          href={site.cv}
-        >
-          Download CV
+          <svg class="size-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2Z"
+            />
+          </svg>
         </a>
       </div>
     </div>

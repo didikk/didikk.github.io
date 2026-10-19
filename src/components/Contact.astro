@@ -1,60 +1,69 @@
 ---
-import { site } from "../data/site";
+import { contactIntro, site } from "../data/site";
 ---
 
 <section
-  class="section-y border-t border-surface-variant bg-surface-container-low"
+  class="w-full bg-surface-container-lowest section-y dark:bg-surface-card"
   id="contact"
 >
-  <div class="page-container">
-    <div class="max-w-reading-width">
-      <h2
-        class="mb-md font-hero-display-mobile text-hero-display-mobile font-extrabold text-primary md:text-[48px]"
+  <div
+    class="mx-auto flex max-w-[800px] flex-col items-center px-margin-mobile text-center md:px-margin"
+  >
+    <span class="section-eyebrow mb-3">Get in Touch</span>
+    <h2
+      class="mb-4 font-display text-headline-lg tracking-tight text-on-surface"
+    >
+      Let's build something useful.
+    </h2>
+    <p class="mb-8 max-w-xl font-body text-body-lg text-text-secondary">
+      {contactIntro}
+    </p>
+    <div class="flex flex-wrap items-center justify-center gap-3">
+      {
+        site.email && (
+          <a
+            class="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 font-body text-body-sm font-medium text-on-primary shadow-sm transition-all hover:opacity-90"
+            href={`mailto:${site.email}`}
+          >
+            <span class="material-symbols-outlined text-[18px]">mail</span>
+            Email Me
+          </a>
+        )
+      }
+      {
+        site.linkedin && (
+          <a
+            class="inline-flex items-center gap-2 rounded-xl bg-surface-card px-6 py-3 font-body text-body-sm font-medium text-on-surface shadow-sm transition-all hover:bg-surface-container-low dark:bg-surface-elevated dark:hover:bg-surface-card"
+            href={site.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
+        )
+      }
+      <a
+        class="inline-flex items-center gap-2 rounded-xl bg-surface-card px-6 py-3 font-body text-body-sm font-medium text-on-surface shadow-sm transition-all hover:bg-surface-container-low dark:bg-surface-elevated dark:hover:bg-surface-card"
+        href={site.github}
+        target="_blank"
+        rel="noopener noreferrer"
       >
-        Let's build something useful.
-      </h2>
-      <p class="mb-md font-body-lg text-body-lg text-on-surface-variant">
-        Interested in working together or discussing a software engineering
-        opportunity?
-      </p>
-      <div class="flex flex-wrap gap-base">
-        {
-          site.email ? (
-            <a
-              class="inline-flex items-center justify-center rounded bg-primary px-md py-4 font-metadata text-metadata text-on-primary transition-colors duration-200 hover:bg-accent"
-              href={`mailto:${site.email}`}
-            >
-              Email me
-            </a>
-          ) : (
-            <span class="inline-flex items-center justify-center rounded bg-primary px-md py-4 font-metadata text-metadata text-on-primary">
-              Email me
-            </span>
-          )
-        }
-        {
-          site.linkedin ? (
-            <a
-              class="inline-flex items-center justify-center rounded border border-outline-variant bg-surface-container-lowest px-md py-4 font-metadata text-metadata text-primary transition-colors duration-200 hover:border-accent hover:text-accent"
-              href={site.linkedin}
-            >
-              LinkedIn
-            </a>
-          ) : (
-            <span class="inline-flex items-center justify-center rounded border border-outline-variant bg-surface-container-lowest px-md py-4 font-metadata text-metadata text-primary">
-              LinkedIn
-            </span>
-          )
-        }
-        <a
-          class="inline-flex items-center justify-center rounded border border-outline-variant bg-surface-container-lowest px-md py-4 font-metadata text-metadata text-primary transition-colors duration-200 hover:border-accent hover:text-accent"
-          href={site.github}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub
-        </a>
-      </div>
+        GitHub
+      </a>
     </div>
+    <button
+      type="button"
+      class="mt-12 inline-flex items-center gap-1.5 font-label text-caption text-text-muted transition-colors hover:text-on-surface"
+      id="back-to-top"
+    >
+      <span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+      Back to top
+    </button>
   </div>
 </section>
+
+<script>
+  document.getElementById("back-to-top")?.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>

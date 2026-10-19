@@ -13,14 +13,16 @@ import Footer from "../components/Footer.astro";
 
 <BaseLayout>
   <Header />
-  <main class="pt-18" id="main">
-    <Hero />
-    <SelectedWork />
-    <Experience />
-    <TechnicalFocus />
-    <EngineeringPrinciples />
-    <About />
-    <Contact />
+  <main class="min-h-screen w-full bg-canvas pt-16" id="main">
+    <div class="flex w-full flex-col">
+      <Hero />
+      <SelectedWork />
+      <TechnicalFocus />
+      <Experience />
+      <EngineeringPrinciples />
+      <About />
+      <Contact />
+    </div>
   </main>
   <Footer />
 </BaseLayout>
