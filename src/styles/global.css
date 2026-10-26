@@ -1,164 +1,47 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 @theme {
-  --color-canvas: #fafafa;
-  --color-background: #fafafa;
-  --color-surface: #f8f9ff;
-  --color-surface-card: #ffffff;
-  --color-surface-elevated: #ffffff;
-  --color-surface-dim: #cbdbf5;
-  --color-surface-container: #e5eeff;
-  --color-surface-container-low: #eff4ff;
-  --color-surface-container-high: #dce9ff;
-  --color-surface-container-lowest: #ffffff;
-  --color-surface-variant: #d3e4fe;
-  --color-on-background: #0b1c30;
-  --color-on-surface: #0b1c30;
-  --color-on-surface-variant: #45464d;
-  --color-text-secondary: #64748b;
-  --color-text-muted: #94a3b8;
-  --color-on-primary: #ffffff;
-  --color-primary: #000000;
-  --color-secondary: #0051d5;
-  --color-accent: #2563eb;
-  --color-accent-hover: #1d4ed8;
-  --color-outline: #76777d;
-  --color-outline-variant: #c6c6cd;
-  --color-border-subtle: #e2e8f0;
-  --color-border-strong: #cbd5e1;
-  --color-badge: #f1f5f9;
-  --color-badge-border: #e2e8f0;
-  --color-status: #10b981;
+  --color-paper: #f5f5f2;
+  --color-ink: #141414;
+  --color-night: #131313;
+  --color-night-text: #f2f1ec;
+  --color-night-muted: #bdbdb8;
+  --color-night-line: #4a4a47;
+  --color-night-pill: #3a3a37;
+  --color-night-rule: #2e2e2b;
+  --color-night-faint: #a3a39e;
+  --color-frame: #2b2b29;
+  --color-screen: #fafaf7;
+  --color-muted: #5e5e5a;
+  --color-body: #45453f;
+  --color-rule: #d3d3cd;
+  --color-track: #e2e2dc;
+  --color-part-time: #8c8c86;
+  --color-accent: #ff6a3d;
 
-  --font-display: "Inter", ui-sans-serif, sans-serif;
-  --font-headline: "Inter", ui-sans-serif, sans-serif;
-  --font-body: "Inter", ui-sans-serif, sans-serif;
-  --font-eyebrow: "JetBrains Mono", ui-monospace, monospace;
-  --font-label: "JetBrains Mono", ui-monospace, monospace;
-  --font-sans: "Inter", ui-sans-serif, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, monospace;
-
-  --text-display: 3.5rem;
-  --text-display--line-height: 1.1;
-  --text-display--letter-spacing: -0.03em;
-  --text-display--font-weight: 700;
-
-  --text-display-mobile: 2.25rem;
-  --text-display-mobile--line-height: 1.15;
-  --text-display-mobile--letter-spacing: -0.025em;
-  --text-display-mobile--font-weight: 700;
-
-  --text-headline-lg: 2.25rem;
-  --text-headline-lg--line-height: 1.2;
-  --text-headline-lg--letter-spacing: -0.02em;
-  --text-headline-lg--font-weight: 600;
-
-  --text-headline-sm: 1.125rem;
-  --text-headline-sm--line-height: 1.4;
-  --text-headline-sm--letter-spacing: -0.01em;
-  --text-headline-sm--font-weight: 600;
-
-  --text-body-lg: 1.125rem;
-  --text-body-lg--line-height: 1.65;
-  --text-body-lg--font-weight: 400;
-
-  --text-body-md: 1rem;
-  --text-body-md--line-height: 1.6;
-  --text-body-md--font-weight: 400;
-
-  --text-body-sm: 0.875rem;
-  --text-body-sm--line-height: 1.5;
-  --text-body-sm--font-weight: 400;
-
-  --text-eyebrow: 0.75rem;
-  --text-eyebrow--line-height: 1.3;
-  --text-eyebrow--letter-spacing: 0.08em;
-  --text-eyebrow--font-weight: 600;
-
-  --text-label-code: 0.8125rem;
-  --text-label-code--line-height: 1.4;
-  --text-label-code--letter-spacing: -0.01em;
-  --text-label-code--font-weight: 500;
-
-  --text-caption: 0.8125rem;
-  --text-caption--line-height: 1.4;
-  --text-caption--font-weight: 400;
-
-  --spacing-space-xs: 0.25rem;
-  --spacing-space-sm: 0.5rem;
-  --spacing-space-md: 1rem;
-  --spacing-space-lg: 1.5rem;
-  --spacing-space-xl: 2rem;
-  --spacing-gutter: 1.5rem;
-  --spacing-margin: 2rem;
-  --spacing-margin-mobile: 1.25rem;
-  --spacing-max-width: 75rem;
-
-  --radius: 0.25rem;
-  --radius-lg: 0.5rem;
-  --radius-xl: 0.75rem;
-  --radius-2xl: 1rem;
-  --radius-full: 9999px;
-}
-
-.dark {
-  --color-canvas: #0b0f19;
-  --color-background: #0b0f19;
-  --color-surface: #111319;
-  --color-surface-card: #111827;
-  --color-surface-elevated: #1f2937;
-  --color-surface-dim: #1f2937;
-  --color-surface-container: #1f2937;
-  --color-surface-container-low: #111827;
-  --color-surface-container-high: #1f2937;
-  --color-surface-container-lowest: #111827;
-  --color-surface-variant: #1e293b;
-  --color-on-background: #f8fafc;
-  --color-on-surface: #f8fafc;
-  --color-on-surface-variant: #94a3b8;
-  --color-text-secondary: #94a3b8;
-  --color-text-muted: #64748b;
-  --color-on-primary: #0b0f19;
-  --color-primary: #f8fafc;
-  --color-secondary: #3b82f6;
-  --color-accent: #3b82f6;
-  --color-accent-hover: #2563eb;
-  --color-outline: #64748b;
-  --color-outline-variant: #334155;
-  --color-border-subtle: #1e293b;
-  --color-border-strong: #334155;
-  --color-badge: #1e293b;
-  --color-badge-border: #334155;
+  --font-display: "Bricolage Grotesque", ui-sans-serif, sans-serif;
+  --font-body: "Geist", system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, monospace;
 }
 
 @utility page-container {
-  @apply mx-auto max-w-max-width px-margin-mobile md:px-margin;
+  @apply mx-auto max-w-[1240px] px-[clamp(16px,4vw,48px)];
 }
 
-@utility section-y {
-  @apply py-16 md:py-24;
-}
-
-@utility section-eyebrow {
-  @apply font-eyebrow text-eyebrow uppercase tracking-widest text-secondary;
+@utility display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.045em;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
+  /* Clears the sticky header when jumping to a section. */
+  scroll-padding-top: 76px;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  * {
-    transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-  }
+a {
+  text-underline-offset: 4px;
 }
 
 :focus-visible {
@@ -166,7 +49,92 @@ html {
   outline-offset: 3px;
 }
 
-.material-symbols-outlined {
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
-  vertical-align: middle;
+/* Hero load: text settles, then the devices rise into place. End state is the element's own style. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(var(--rise-from, 12px)) rotate(0deg);
+  }
+}
+
+.rise {
+  animation: rise 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  animation-delay: var(--delay, 0ms);
+}
+
+.rise-device {
+  --rise-from: 120px;
+  animation-duration: 0.8s;
+  /* Same function list as the keyframe so the phones swing out to their tilt. */
+  transform: translateY(0) rotate(var(--tilt, 0deg));
+}
+
+/* Availability dot: one slow ring, so "open to roles" reads as live. */
+.status-dot {
+  position: relative;
+}
+
+.status-dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: inherit;
+  animation: ping 2.4s cubic-bezier(0, 0, 0.2, 1) 1.2s infinite;
+}
+
+@keyframes ping {
+  70%,
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+/* Played once by the [data-observe] script in BaseLayout. */
+.timeline-bar,
+.device-stage > * {
+  transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: var(--delay, 0ms);
+}
+
+/* Experience bars grow from their start point. */
+.timeline-bar {
+  transform-origin: left;
+}
+
+.armed .timeline-bar {
+  transform: scaleX(0);
+}
+
+/* Featured devices rise out of the panel's bottom edge, echoing the hero. */
+.device-stage.armed > * {
+  transform: translateY(110%);
+}
+
+.device-stage > :nth-child(2) {
+  --delay: 90ms;
+}
+
+.armed.is-visible .timeline-bar,
+.device-stage.armed.is-visible > * {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .armed .timeline-bar,
+  .device-stage.armed > * {
+    transform: none;
+  }
 }

@@ -3,56 +3,54 @@ export interface NavItem {
   href: string;
 }
 
-export type ProjectTone =
-  | "emerald"
-  | "red"
-  | "blue"
-  | "purple"
-  | "amber"
-  | "lime";
+/** Placeholder device shape; swap the label for a real screenshot later. */
+export type DeviceFrame =
+  | "phone"
+  | "tablet-landscape"
+  | "tablet-portrait"
+  | "tv"
+  | "web"
+  | "tablet-phone";
+
+export interface Shot {
+  frame: DeviceFrame;
+  label: string;
+}
 
 export interface Project {
-  category: string;
   title: string;
+  /** Mono meta line above the title. */
+  meta: string;
+  /** Brand colour behind the device mock. */
+  tone: string;
   description: string;
-  tags: string[];
-  tone: ProjectTone;
-  icon: string;
+  highlights?: string[];
+  role?: string;
+  stack: string;
+  shots: Shot[];
+  featured?: boolean;
   playStore?: string;
   appStore?: string;
 }
 
-export interface ExperienceItem {
-  id: string;
-  company: string;
-  shortName: string;
-  role: string;
-  start: string;
-  end?: string | null;
-  summary?: string;
-  tags?: string[];
-  indexLabel?: string;
+export interface Platform {
+  name: string;
+  meta: string;
+  body: string;
 }
 
-export interface SkillPair {
-  label: string;
-  detail: string;
+export interface ExperienceItem {
+  company: string;
+  role: string;
+  /** Shorter role line for phones. */
+  roleShort: string;
+  start: string;
+  end?: string;
+  summary: string;
+  partTime?: boolean;
 }
 
 export interface Principle {
   title: string;
   body: string;
-  tag: string;
-  icon: string;
-  tone: ProjectTone;
-}
-
-export interface HeroContent {
-  eyebrow: string;
-  headline: string;
-  body: string;
-  primaryCta: string;
-  secondaryCta: string;
-  chips: string[];
-  location: string;
 }
