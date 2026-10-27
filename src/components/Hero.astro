@@ -4,11 +4,9 @@ import { hero, site } from "../data/site";
 const ghost =
   "inline-flex min-h-[52px] items-center justify-center rounded-full px-[26px] no-underline transition-opacity hover:opacity-80";
 
-// Screens in the collage are placeholders for real screenshots.
 const phone =
-  "rise rise-device absolute top-16 box-border flex h-[200px] w-24 flex-col justify-between rounded-[22px] border-[6px] border-frame px-[9px] py-3 text-white sm:top-[110px] sm:h-[280px] sm:w-[134px] lg:top-[130px] lg:h-[470px] lg:w-[230px] lg:rounded-[42px] lg:border-8 lg:px-[22px] lg:py-7";
-const phoneName = "display text-[13px] leading-[1.05] tracking-normal lg:text-2xl";
-const label = "hidden font-mono text-xs lg:inline";
+  "rise rise-device absolute top-16 box-border h-[200px] w-24 overflow-hidden rounded-[17px] border-[6px] border-frame sm:top-[110px] sm:h-[280px] sm:w-[134px] sm:rounded-[24px] lg:top-[130px] lg:h-[470px] lg:w-[230px] lg:rounded-[42px] lg:border-8";
+const img = "size-full object-cover object-top";
 ---
 
 <section id="top" class="overflow-hidden bg-night text-night-text">
@@ -39,19 +37,16 @@ const label = "hidden font-mono text-xs lg:inline";
       class="relative -mx-1.5 mt-12 -mb-[100px] h-[300px] sm:mx-auto sm:-mb-[130px] sm:h-[400px] sm:max-w-[680px] lg:mx-auto lg:mt-24 lg:-mb-[150px] lg:h-[600px] lg:max-w-[1080px]"
     >
       <div
-        class="rise rise-device absolute inset-x-0 top-0 mx-auto box-border flex aspect-[4/3] w-[240px] flex-col justify-between rounded-[18px] border-[6px] border-frame bg-[#001E61] px-3.5 py-3 text-white sm:w-[460px] lg:inset-x-[170px] lg:aspect-auto lg:h-[540px] lg:w-auto lg:rounded-[36px] lg:border-[10px] lg:p-8"
+        class="rise rise-device absolute inset-x-0 top-0 mx-auto box-content aspect-[1194/834] w-[240px] overflow-hidden rounded-[18px] border-[8px] border-frame bg-[#001E61] sm:w-[460px] sm:rounded-[26px] sm:border-[12px] lg:inset-x-[170px] lg:w-auto lg:rounded-[36px] lg:border-[16px]"
         style="--delay:250ms"
       >
-        <span class="display text-[15px] leading-[1.05] tracking-normal lg:text-[28px]">Synergy Kiosk App</span>
-        <span class="hidden font-mono text-xs lg:inline">[Landscape tablet screenshot: kiosk]</span>
+        <img src="/images/kiosk.png" alt="" fetchpriority="high" class={img} />
       </div>
       <div class={`${phone} left-0 bg-[#C62828]`} style="--tilt:-4deg;--delay:330ms">
-        <span class={phoneName}>SiCepat Ekspres</span>
-        <span class={label}>[Screenshot]</span>
+        <img src="/images/sicepat1.jpeg" alt="" class={img} />
       </div>
       <div class={`${phone} right-0 bg-[#1F6B45]`} style="--tilt:4deg;--delay:410ms">
-        <span class={phoneName}>FarmByte Grow</span>
-        <span class={label}>[Screenshot]</span>
+        <img src="/images/farmbyte1.jpeg" alt="" class={img} />
       </div>
     </div>
   </div>

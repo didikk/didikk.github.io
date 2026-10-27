@@ -3,7 +3,7 @@ export interface NavItem {
   href: string;
 }
 
-/** Placeholder device shape; swap the label for a real screenshot later. */
+/** Device shape around a screenshot. */
 export type DeviceFrame =
   | "phone"
   | "tablet-landscape"
@@ -13,7 +13,10 @@ export type DeviceFrame =
 
 export interface Shot {
   frame: DeviceFrame;
+  /** Placeholder text shown until `src` exists. */
   label: string;
+  /** Screenshot path under /public. */
+  src?: string;
 }
 
 export interface Project {

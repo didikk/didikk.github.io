@@ -74,7 +74,7 @@ export const projects: Project[] = [
     ],
     role: "Lead developer since 2020. I maintain the app and ship new features. I also proposed and led two full rewrites: Cordova/Angular to React Native, then to Flutter.",
     stack: "Flutter · BLoC/Cubit · Clean Architecture",
-    shots: [{ frame: "tablet-landscape", label: "Landscape tablet screenshot: kiosk" }],
+    shots: [{ frame: "tablet-landscape", label: "Landscape tablet screenshot: kiosk", src: "/images/kiosk.png" }],
     playStore: "https://play.google.com/store/apps/details?id=com.synergyworldwide.kioskapp",
     appStore: "https://apps.apple.com/id/app/pulsekiosk/id1559545629",
   },
@@ -93,8 +93,8 @@ export const projects: Project[] = [
     role: "I maintained the app and shipped new features. I also proposed and led a full rewrite, using Clean Architecture, feature-first folders, Zustand and React Query.",
     stack: "React Native · Zustand · React Query · Jest · React Native Testing Library · Fastlane",
     shots: [
-      { frame: "phone", label: "Screenshot: tracking" },
-      { frame: "phone", label: "Screenshot: payment" },
+      { frame: "phone", label: "Screenshot: tracking", src: "/images/sicepat1.jpeg" },
+      { frame: "phone", label: "Screenshot: payment", src: "/images/sicepat2.jpeg" },
     ],
     playStore: "https://play.google.com/store/apps/details?id=com.sicepat.consumer",
     appStore: "https://apps.apple.com/id/app/sicepat-ekspres/id1608647889",
@@ -114,8 +114,8 @@ export const projects: Project[] = [
     role: "One of 8 mobile developers maintaining the app and shipping new features.",
     stack: "React Native · TypeScript · Redux · Redux Toolkit",
     shots: [
-      { frame: "phone", label: "Screenshot: farm overview" },
-      { frame: "phone", label: "Screenshot" },
+      { frame: "phone", label: "Screenshot: farm overview", src: "/images/farmbyte1.jpeg" },
+      { frame: "phone", label: "Screenshot", src: "/images/farmbyte2.jpeg" },
     ],
     playStore:
       "https://play.google.com/store/apps/details?id=com.newfarmbytedigital.farmbyte",
@@ -129,7 +129,7 @@ export const projects: Project[] = [
       "Customer-facing tablet app in stores in Korea and Japan. Processes customer orders before they go to the Order Status Board or the In-Store Pickup App.",
     role: "I led both of its rewrites, alongside the Kiosk App.",
     stack: "Flutter · iPad and Android tablet",
-    shots: [{ frame: "tablet-landscape", label: "Landscape tablet" }],
+    shots: [{ frame: "tablet-landscape", label: "Landscape tablet", src: "/images/pca.png" }],
   },
   {
     title: "In-Store Pickup App",
@@ -139,7 +139,7 @@ export const projects: Project[] = [
       "Staff app for order tracking and fulfillment. The tablet counterpart to the In-Store Pickup Screen.",
     role: "I built it from scratch in React Native, then rewrote it in Flutter.",
     stack: "Flutter",
-    shots: [{ frame: "tablet-portrait", label: "Portrait tablet" }],
+    shots: [{ frame: "tablet-portrait", label: "Portrait tablet", src: "/images/ispa.png" }],
   },
   {
     title: "Order Status Board",
@@ -149,7 +149,7 @@ export const projects: Project[] = [
       "In-store TV display that shows waiting customers the current status of their orders, such as In Progress or Ready for Pickup.",
     role: "I rewrote it from Angular to React.",
     stack: "React",
-    shots: [{ frame: "tv", label: "TV screen" }],
+    shots: [{ frame: "tv", label: "TV screen", src: "/images/osb.png" }],
   },
   {
     title: "In-Store Pickup Screen",
@@ -158,7 +158,7 @@ export const projects: Project[] = [
     description: "Web app that store staff use to process orders.",
     role: "I maintain it and ship new features.",
     stack: "Angular",
-    shots: [{ frame: "web", label: "Web app" }],
+    shots: [{ frame: "web", label: "Web app", src: "/images/isps.png" }],
   },
   {
     title: "King Glossy",
@@ -168,7 +168,7 @@ export const projects: Project[] = [
       "App for a car care shop to track services, invoices and expenses. Includes monthly reports and customer statistics.",
     role: "I built it on my own and still maintain it.",
     stack: "Flutter",
-    shots: [{ frame: "phone", label: "Screenshot" }],
+    shots: [{ frame: "phone", label: "Screenshot", src: "/images/kingglossy.png" }],
   },
   {
     title: "Kura-Kura Coffee POS",
@@ -178,7 +178,7 @@ export const projects: Project[] = [
       "Cashier app with ordering, Cash and QRIS payments, and Bluetooth receipt printing. Includes an admin area for products, stock and settings, plus sales charts and daily reports. In use by the business.",
     role: "I built it on my own.",
     stack: "Flutter",
-    shots: [{ frame: "tablet-landscape", label: "Screenshot" }],
+    shots: [{ frame: "tablet-landscape", label: "Screenshot", src: "/images/kurapos.png" }],
   },
   {
     title: "Maritim Hub",
@@ -188,7 +188,7 @@ export const projects: Project[] = [
       "Service and data portal run by Indonesia's Directorate General of Sea Transportation. It brings maritime services into one app, with about 80 request types, each with its own detail layout rendered from data.",
     role: "I built the request detail page, in a team of 3.",
     stack: "Flutter",
-    shots: [{ frame: "phone", label: "Screenshot" }],
+    shots: [{ frame: "phone", label: "Screenshot", src: "/images/maritimhub.jpeg" }],
     playStore:
       "https://play.google.com/store/apps/details?id=com.djpl.maritimHub",
   },
@@ -200,7 +200,7 @@ export const projects: Project[] = [
       "News app for Radio Republik Indonesia, with streaming radio and multi-language support.",
     role: "I built the app from scratch.",
     stack: "React Native · TypeScript · Zustand",
-    shots: [{ frame: "phone", label: "Screenshot" }],
+    shots: [{ frame: "phone", label: "Screenshot", src: "/images/rri.jpeg" }],
     playStore: "https://play.google.com/store/apps/details?id=com.rri.news.app",
     appStore: "https://apps.apple.com/id/app/rri-news/id6504948692",
   },
@@ -224,7 +224,7 @@ export const projects: Project[] = [
       "Planting maps, market prices, weather forecasts and pest guidance for vegetable farmers.",
     role: "One of the client apps I shipped to Google Play at Firzil Tech.",
     stack: "Native Android · Java",
-    shots: [{ frame: "phone", label: "Screenshot" }],
+    shots: [{ frame: "phone", label: "Screenshot", src: "/images/sipindo.png" }],
     playStore:
       "https://play.google.com/store/apps/details?id=com.panahmerah.sipindo",
   },
