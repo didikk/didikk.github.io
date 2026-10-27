@@ -20,7 +20,6 @@ const card: Record<Shot["frame"], string> = {
   "tablet-portrait": "h-[236px] w-[170px] self-end rounded-t-[22px] border-[7px] border-b-0",
   tv: "h-[130px] w-[230px] rounded-lg border-[7px]",
   web: "h-[150px] w-[230px] rounded-xl border-[6px] border-t-[22px]",
-  "tablet-phone": "h-[136px] w-[196px] rounded-[18px] border-[7px]",
 };
 
 const feature: Partial<Record<Shot["frame"], string>> = {
@@ -39,11 +38,6 @@ const feature: Partial<Record<Shot["frame"], string>> = {
       <div class="h-[22px] w-2 bg-ink" />
       <div class="h-1.5 w-[90px] rounded-[3px] bg-ink" />
     </div>
-  ) : shot.frame === "tablet-phone" ? (
-    <>
-      <div class={`${screen} text-xs ${card["tablet-phone"]}`}>[{shot.label}]</div>
-      <div class="box-border h-[104px] w-[54px] rounded-[14px] border-[5px] border-ink bg-screen" />
-    </>
   ) : (
     <div class={`${screen} text-xs ${card[shot.frame]}`}>[{shot.label}]</div>
   )

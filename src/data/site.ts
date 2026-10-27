@@ -217,16 +217,6 @@ export const projects: Project[] = [
       "https://play.google.com/store/apps/details?id=com.pvp.klikoo.original",
   },
   {
-    title: "Posy",
-    meta: "Point of sale · Pintar Ventura · 2021–2022",
-    tone: "#B45309",
-    description: "Cashier app for tablets and phones, with a responsive layout for each.",
-    role: "One of 4–5 mobile developers who built and maintained the app.",
-    stack: "React Native · GraphQL · Apollo Client",
-    shots: [{ frame: "tablet-phone", label: "Landscape tablet" }],
-    playStore: "https://play.google.com/store/apps/details?id=com.pvp.posy",
-  },
-  {
     title: "SIPINDO",
     meta: "Agriculture information · Firzil Tech · 2016–2018",
     tone: "#3F6212",

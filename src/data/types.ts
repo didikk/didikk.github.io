@@ -9,8 +9,7 @@ export type DeviceFrame =
   | "tablet-landscape"
   | "tablet-portrait"
   | "tv"
-  | "web"
-  | "tablet-phone";
+  | "web";
 
 export interface Shot {
   frame: DeviceFrame;
