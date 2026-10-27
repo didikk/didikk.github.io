@@ -24,9 +24,9 @@ const card: Record<Shot["frame"], string> = {
 };
 
 const feature: Partial<Record<Shot["frame"], string>> = {
-  phone: `${tall ? "h-[440px]" : "h-[380px]"} flex-[0_1_220px] rounded-t-[40px] border-8 border-b-0`,
+  phone: `${tall ? "aspect-[22/34] md:aspect-[22/38]" : "aspect-[22/30] md:aspect-[22/34]"} flex-[0_1_220px] rounded-t-[40px] border-8 border-b-0`,
   "tablet-landscape":
-    "mb-[clamp(28px,4vw,56px)] h-[330px] flex-[0_1_480px] rounded-[28px] border-8",
+    "mb-[clamp(28px,4vw,56px)] aspect-[48/33] flex-[0_1_480px] rounded-[28px] border-8",
 };
 ---
 
