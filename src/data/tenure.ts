@@ -37,11 +37,15 @@ export function formatMonthYear(iso: string): string {
   return `${MONTHS[date.getMonth()]} ${date.getFullYear()}`;
 }
 
-/** Start–end only. Open end → "Present". */
+/** "Apr 2022–Apr 2025", same year collapses to "May–Sep 2025", open end → "Present". */
 export function formatPeriod(start: string, end?: string | null): string {
   const startLabel = formatMonthYear(start);
-  if (!end) return `${startLabel} – Present`;
-  return `${startLabel} – ${formatMonthYear(end)}`;
+  if (!end) return `${startLabel}–Present`;
+  const [s, e] = [parseMonth(start), parseMonth(end)];
+  if (s.getFullYear() === e.getFullYear()) {
+    return `${MONTHS[s.getMonth()]}–${formatMonthYear(end)}`;
+  }
+  return `${startLabel}–${formatMonthYear(end)}`;
 }
 
 export function formatYearsPlus(years: number): string {

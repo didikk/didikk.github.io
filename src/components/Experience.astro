@@ -1,106 +1,63 @@
 ---
-import {
-  experience,
-  experienceIntro,
-  tenureBlurb,
-  totalTenureLabel,
-} from "../data/site";
+import { careerStart, experience } from "../data/site";
+import { formatPeriod, parseMonth } from "../data/tenure";
+
+const from = parseMonth(careerStart).getTime();
+const span = Date.now() - from;
+const pct = (t: number) => `${(((t - from) / span) * 100).toFixed(2)}%`;
+const ticks = [2020, 2025].map((y) => ({ year: y, left: pct(new Date(y, 0, 1).getTime()) }));
+
+const rows = experience.map((job) => {
+  const start = parseMonth(job.start).getTime();
+  const end = job.end ? parseMonth(job.end).getTime() : Date.now();
+  return {
+    ...job,
+    period: formatPeriod(job.start, job.end),
+    left: pct(start),
+    width: `${(((end - start) / span) * 100).toFixed(2)}%`,
+  };
+});
 ---
 
-<section class="page-container section-y" id="experience">
-  <div class="mb-12 flex flex-col gap-3">
-    <div class="flex items-center gap-2">
-      <span class="h-px w-6 bg-secondary"></span>
-      <span class="section-eyebrow">Chronology</span>
-    </div>
-    <h2 class="font-headline text-headline-lg tracking-tight text-on-surface">
-      Work Experience
-    </h2>
-    <p class="max-w-2xl font-body text-body-md text-text-secondary">
-      {experienceIntro}
-    </p>
+<section id="experience" class="flex scroll-mt-6 flex-col gap-3 pt-[88px] md:gap-6 md:pt-[140px]">
+  <h2 class="display mb-2 text-[clamp(48px,6vw,88px)] leading-[0.95] md:mb-4">Experience</h2>
+
+  <div aria-hidden="true" class="flex flex-wrap gap-x-10 font-mono text-[11px] text-muted md:pb-2.5 md:text-xs">
+    <span class="hidden flex-[1_1_300px] md:block"></span>
+    <span class="hidden flex-[2_1_400px] md:block"></span>
+    <span class="relative h-5 flex-[1_1_240px]">
+      <span class="absolute left-0">2015</span>
+      {ticks.map((t) => <span class="absolute -translate-x-1/2" style={`left:${t.left}`}>{t.year}</span>)}
+      <span class="absolute right-0">Now</span>
+    </span>
   </div>
 
-  <div class="grid grid-cols-1 items-start gap-8 lg:grid-cols-12 lg:gap-12">
-    <aside class="hidden space-y-4 lg:col-span-4 lg:sticky lg:top-24 lg:block">
-      <div class="rounded-2xl bg-surface-card p-5 shadow-sm dark:bg-surface-elevated">
-        <span
-          class="mb-4 block font-eyebrow text-eyebrow tracking-widest text-text-muted uppercase"
+  <div data-observe>
+    {
+      rows.map((job, i) => (
+        <div
+          class:list={[
+            "flex flex-col gap-1 py-[18px] md:flex-row md:flex-wrap md:items-center md:gap-x-10 md:gap-y-2 md:py-6",
+            i === 0 ? "border-t-2 border-ink" : "border-t border-rule",
+            i === rows.length - 1 && "border-b border-b-rule",
+          ]}
         >
-          Company Index
-        </span>
-        <nav class="space-y-3 font-body text-body-sm">
-          {
-            experience.map((job) => (
-              <a
-                class="flex items-center justify-between text-on-surface transition-colors hover:text-secondary"
-                href={`#exp-${job.id}`}
-              >
-                <span class="font-medium">{job.shortName}</span>
-                <span class="font-label text-caption text-text-muted">
-                  {job.indexLabel}
-                </span>
-              </a>
-            ))
-          }
-        </nav>
-      </div>
-      <div
-        class="rounded-2xl bg-surface-container-low p-5 dark:bg-surface-elevated/50"
-      >
-        <span
-          class="mb-2 block font-eyebrow text-eyebrow tracking-widest text-text-muted uppercase"
-        >
-          Total Production Tenure
-        </span>
-        <p
-          class="font-label text-headline-sm font-bold text-secondary"
-        >
-          {totalTenureLabel}
-        </p>
-        <p class="mt-1 font-body text-caption text-text-secondary">
-          {tenureBlurb}
-        </p>
-      </div>
-    </aside>
-
-    <div class="flex flex-col gap-6 lg:col-span-8">
-      {
-        experience.map((job) => (
-          <article
-            class="rounded-2xl bg-surface-card p-7 shadow-sm dark:bg-surface-elevated"
-            id={`exp-${job.id}`}
-          >
-            <div class="mb-3 flex flex-col justify-between gap-1 sm:flex-row sm:items-center">
-              <h3 class="font-headline text-headline-sm text-on-surface">
-                {job.company}
-              </h3>
-              <span class="font-label text-caption font-semibold text-secondary">
-                {job.period}
-              </span>
-            </div>
-            <p
-              class="mb-4 font-eyebrow text-eyebrow tracking-wider text-text-muted uppercase"
-            >
-              {job.role}
+          <div class="md:flex-[1_1_300px]">
+            <h3 class="display text-xl tracking-[-0.02em] md:text-[22px]">{job.company}</h3>
+            <p class="text-[13px] text-muted md:text-sm">
+              <span class="md:hidden">{job.roleShort}</span>
+              <span class="hidden md:inline">{job.role}</span> · <span class="md:font-mono md:text-[13px]">{job.period}</span>
             </p>
-            {job.summary && (
-              <p class="mb-4 font-body text-body-md leading-relaxed text-text-secondary">
-                {job.summary}
-              </p>
-            )}
-            {job.tags && job.tags.length > 0 && (
-              <div class="flex flex-wrap gap-2">
-                {job.tags.map((tag) => (
-                  <span class="rounded-md bg-surface-container-low px-2.5 py-1 font-label text-caption text-on-surface dark:bg-badge">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            )}
-          </article>
-        ))
-      }
-    </div>
+          </div>
+          <p class="hidden text-[15px] text-body md:block md:flex-[2_1_400px]">{job.summary}</p>
+          <div aria-hidden="true" class="relative mt-2 h-2 rounded bg-track md:mt-0 md:h-2.5 md:flex-[1_1_240px] md:rounded-[5px]">
+            <span
+              class:list={["timeline-bar absolute inset-y-0 rounded-[inherit]", job.partTime ? "bg-part-time" : "bg-ink"]}
+              style={`left:${job.left};width:${job.width};--delay:${i * 60}ms`}
+            />
+          </div>
+        </div>
+      ))
+    }
   </div>
 </section>

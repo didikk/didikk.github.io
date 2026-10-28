@@ -1,330 +1,331 @@
 import type {
   ExperienceItem,
-  HeroContent,
   NavItem,
+  Platform,
   Principle,
   Project,
 } from "./types";
-import {
-  diffYearsMonths,
-  formatPeriod,
-  formatTenureLong,
-  formatYearsPlus,
-  parseMonth,
-} from "./tenure";
+import { diffYearsMonths, parseMonth } from "./tenure";
 
 /** First professional role (Firzil Tech). */
 export const careerStart = "2015-09-01";
 
-const careerTenure = diffYearsMonths(parseMonth(careerStart));
-export const yearsPlus = formatYearsPlus(careerTenure.years);
-export const totalTenureLabel = formatTenureLong(careerTenure);
+const careerYears = diffYearsMonths(parseMonth(careerStart)).years;
 
 export const site = {
   name: "Didik Ismawanto",
   title: "Didik Ismawanto, Senior Mobile Engineer",
-  description: `Senior Mobile Developer with ${yearsPlus} years of experience building and maintaining production mobile apps with React Native, Android, and Flutter.`,
-  role: "Senior Mobile Engineer",
+  description: `Senior mobile engineer with ${careerYears} years of experience in React Native, Flutter and Android.`,
   github: "https://github.com/didikk",
   linkedin: "https://www.linkedin.com/in/didikismawanto/",
-  email: "ismawanto.didik@gmail.com",
+  email: "ismawantodidik@gmail.com",
   cv: "/didik_ismawanto_cv.pdf",
-  availability: "Available for select roles",
 };
 
 export const nav: NavItem[] = [
   { label: "Work", href: "#work" },
-  { label: "Skills", href: "#skills" },
   { label: "Experience", href: "#experience" },
-  { label: "Principles", href: "#principles" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ];
 
-export const hero: HeroContent = {
-  eyebrow: "Mobile Developer · Software Engineer",
-  headline: "Building reliable mobile products and maintainable software.",
-  body: `Senior Mobile Developer with ${yearsPlus} years of experience building and maintaining production mobile apps with React Native, Android, and Flutter. I focus on clean architecture, performance profiling, and keeping large codebases maintainable.`,
-  primaryCta: "View Selected Work",
-  secondaryCta: "View Technical Focus",
-  chips: [
-    `${yearsPlus} Years Exp`,
-    "React Native",
-    "Android (Kotlin & Java)",
-    "Flutter",
-    "Clean Architecture",
-  ],
+export const hero = {
+  status: "Open to senior mobile roles",
+  role: "Senior Mobile Engineer | React Native, Flutter & Android",
   location: "Indonesia",
+  body: `${careerYears} years building mobile apps: Android first, React Native since 2019, Flutter since 2025.`,
 };
+
+export const platforms: Platform[] = [
+  {
+    name: "React Native",
+    meta: "TypeScript · 2019–now",
+    body: "My main stack, for Android and iOS. I use Zustand, Redux, Redux Toolkit, React Query, MobX and Apollo GraphQL, and test with Jest and React Native Testing Library.",
+  },
+  {
+    name: "Flutter",
+    meta: "Dart · 2025–now",
+    body: "Synergy's in-store tablet apps and my recent freelance apps, built with BLoC/Cubit, Clean Architecture and dependency injection, and tested with flutter_test and mocktail.",
+  },
+  {
+    name: "Android",
+    meta: "Kotlin · Java · 2015–2019",
+    body: "Where I started, with MVP, and testing with JUnit, Mockito and Espresso.",
+  },
+];
+
+export const workIntro =
+  "Apps for retail, logistics, agriculture, government, public media and small businesses. They run on phones, tablets, in-store kiosks, a TV display and the web.";
+
+const synergy = "#001E61";
 
 export const projects: Project[] = [
   {
-    category: "Agriculture Tech",
-    title: "FarmByte Grow",
+    featured: true,
+    title: "Synergy Kiosk App",
+    meta: "Retail · Synergy Worldwide · iPad and Android tablet",
+    tone: synergy,
     description:
-      "Farm management app that connects growers with the FarmByte marketplace. Migrated the Android Native client to React Native, built shared UI, and improved runtime stability.",
-    tags: ["React Native", "TypeScript", "Redux", "Native Migration"],
-    tone: "emerald",
-    icon: "leaf",
-    playStore:
-      "https://play.google.com/store/apps/details?id=com.newfarmbytedigital.farmbyte&hl=en_US",
-    appStore: "https://apps.apple.com/my/app/farmbyte-app/id6737538318",
+      "In-store kiosk app for Synergy Worldwide stores in Japan, Korea and Taiwan. Four supporting apps, listed below, handle pickup and order status.",
+    highlights: [
+      "Payments through Suntech in Taiwan and GMO in Japan",
+      "Identity checks through NICE CheckPlus in Korea and TWCA in Taiwan",
+      "DocuSign e-signatures in Japan",
+    ],
+    role: "Lead developer since 2020. I maintain the app and ship new features. I also proposed and led two full rewrites: Cordova/Angular to React Native, then to Flutter.",
+    stack: "Flutter · BLoC/Cubit · Clean Architecture",
+    shots: [{ frame: "tablet-landscape", label: "Landscape tablet screenshot: kiosk", src: "/images/kiosk.png" }],
+    playStore: "https://play.google.com/store/apps/details?id=com.synergyworldwide.kioskapp",
+    appStore: "https://apps.apple.com/id/app/pulsekiosk/id1559545629",
   },
   {
-    category: "Logistics & Operations",
-    title: "SiCepat Express",
+    featured: true,
+    title: "SiCepat Ekspres",
+    meta: "Logistics · PT. SiCepat Ekspres Indonesia · 2022–2025",
+    tone: "#C62828",
     description:
-      "Consumer logistics app for booking, tracking, and paying for shipments across Indonesia. Refactored to Clean Architecture, improved scroll performance, and integrated Midtrans, Xendit, MoEngage, and Insider.",
-    tags: ["React Native", "Clean Architecture", "Zustand", "Midtrans/Xendit"],
-    tone: "red",
-    icon: "truck",
-    playStore:
-      "https://play.google.com/store/apps/details?id=com.sicepat.consumer&hl=en&gl=US",
+      "Consumer logistics app for booking, tracking and paying for shipments across Indonesia.",
+    highlights: [
+      "Android and iOS, 500K+ downloads on Google Play",
+      "Payments through Midtrans and Xendit",
+      "Customer engagement through MoEngage and Insider",
+    ],
+    role: "I maintained the app and shipped new features. I also proposed and led a full rewrite, using Clean Architecture, feature-first folders, Zustand and React Query.",
+    stack: "React Native · Zustand · React Query · Jest · React Native Testing Library · Fastlane",
+    shots: [
+      { frame: "phone", label: "Screenshot: tracking", src: "/images/sicepat1.jpeg" },
+      { frame: "phone", label: "Screenshot: payment", src: "/images/sicepat2.jpeg" },
+    ],
+    playStore: "https://play.google.com/store/apps/details?id=com.sicepat.consumer",
     appStore: "https://apps.apple.com/id/app/sicepat-ekspres/id1608647889",
   },
   {
-    category: "Media & Broadcast",
-    title: "RRI News",
+    featured: true,
+    title: "FarmByte Grow",
+    meta: "Agriculture tech · Farmbyte Sdn Bhd · 2025",
+    tone: "#1F6B45",
     description:
-      "News app for Radio Republik Indonesia with live radio, categorized updates, and multi-language support on iOS and Android.",
-    tags: ["React Native", "TypeScript", "Zustand", "Multi-language"],
-    tone: "blue",
-    icon: "news",
+      "App that helps farmers manage their crops from planting to harvest.",
+    highlights: [
+      "Android and iOS, built in React Native to replace the legacy Android app",
+      "Advice from agronomists, farming guides and crop market prices",
+      "A farm log for fertiliser and pesticide use, and harvest collection booking",
+    ],
+    role: "One of 8 mobile developers maintaining the app and shipping new features.",
+    stack: "React Native · TypeScript · Redux · Redux Toolkit",
+    shots: [
+      { frame: "phone", label: "Screenshot: farm overview", src: "/images/farmbyte1.jpeg" },
+      { frame: "phone", label: "Screenshot", src: "/images/farmbyte2.jpeg" },
+    ],
     playStore:
-      "https://play.google.com/store/apps/details?id=com.rri.news.app&hl=en_US",
+      "https://play.google.com/store/apps/details?id=com.newfarmbytedigital.farmbyte",
+    appStore: "https://apps.apple.com/my/app/farmbyte-app/id6737538318",
+  },
+  {
+    title: "Pickup Center App",
+    meta: "Retail · Synergy · Tablet, landscape",
+    tone: synergy,
+    description:
+      "Customer-facing tablet app in stores in Korea and Japan. Processes customer orders before they go to the Order Status Board or the In-Store Pickup App.",
+    role: "I led both of its rewrites, alongside the Kiosk App.",
+    stack: "Flutter · iPad and Android tablet",
+    shots: [{ frame: "tablet-landscape", label: "Landscape tablet", src: "/images/pca.png" }],
+  },
+  {
+    title: "In-Store Pickup App",
+    meta: "Retail · Synergy · Tablet, portrait",
+    tone: synergy,
+    description:
+      "Staff app for order tracking and fulfillment. The tablet counterpart to the In-Store Pickup Screen.",
+    role: "I built it from scratch in React Native, then rewrote it in Flutter.",
+    stack: "Flutter",
+    shots: [{ frame: "tablet-portrait", label: "Portrait tablet", src: "/images/ispa.png" }],
+  },
+  {
+    title: "Order Status Board",
+    meta: "Retail · Synergy · In-store TV",
+    tone: synergy,
+    description:
+      "In-store TV display that shows waiting customers the current status of their orders, such as In Progress or Ready for Pickup.",
+    role: "I rewrote it from Angular to React.",
+    stack: "React",
+    shots: [{ frame: "tv", label: "TV screen", src: "/images/osb.png" }],
+  },
+  {
+    title: "In-Store Pickup Screen",
+    meta: "Retail · Synergy · Web",
+    tone: synergy,
+    description: "Web app that store staff use to process orders.",
+    role: "I maintain it and ship new features.",
+    stack: "Angular",
+    shots: [{ frame: "web", label: "Web app", src: "/images/isps.png" }],
+  },
+  {
+    title: "King Glossy",
+    meta: "Car care business · Freelance · 2026–now",
+    tone: "#AF101A",
+    description:
+      "App for a car care shop to track services, invoices and expenses. Includes monthly reports and customer statistics.",
+    role: "I built it on my own and still maintain it.",
+    stack: "Flutter",
+    shots: [{ frame: "phone", label: "Screenshot", src: "/images/kingglossy.png" }],
+  },
+  {
+    title: "Kura-Kura Coffee POS",
+    meta: "Point of sale · Freelance · 2026",
+    tone: "#361F1A",
+    description:
+      "Cashier app with ordering, Cash and QRIS payments, and Bluetooth receipt printing. Includes an admin area for products, stock and settings, plus sales charts and daily reports. In use by the business.",
+    role: "I built it on my own.",
+    stack: "Flutter",
+    shots: [{ frame: "tablet-landscape", label: "Screenshot", src: "/images/kurapos.png" }],
+  },
+  {
+    title: "Maritim Hub",
+    meta: "Government · Freelance · 2025",
+    tone: "#1E3567",
+    description:
+      "Service and data portal run by Indonesia's Directorate General of Sea Transportation. It brings maritime services into one app, with about 80 request types, each with its own detail layout rendered from data.",
+    role: "I built the request detail page, in a team of 3.",
+    stack: "Flutter",
+    shots: [{ frame: "phone", label: "Screenshot", src: "/images/maritimhub.jpeg" }],
+    playStore:
+      "https://play.google.com/store/apps/details?id=com.djpl.maritimHub",
+  },
+  {
+    title: "RRI News",
+    meta: "Media & broadcast · Freelance · 2024",
+    tone: "#1E4FA3",
+    description:
+      "News app for Radio Republik Indonesia, with streaming radio and multi-language support.",
+    role: "I built the app from scratch.",
+    stack: "React Native · TypeScript · Zustand",
+    shots: [{ frame: "phone", label: "Screenshot", src: "/images/rri.jpeg" }],
+    playStore: "https://play.google.com/store/apps/details?id=com.rri.news.app",
     appStore: "https://apps.apple.com/id/app/rri-news/id6504948692",
   },
   {
-    category: "Fintech · PPOB",
-    title: "Klikoo",
-    description:
-      "PPOB app for agents to sell pulsa, pay bills, and book tickets. Built with GraphQL dynamic forms so new catalog services can ship without an app store update.",
-    tags: ["React Native", "GraphQL", "Dynamic Forms", "PPOB"],
-    tone: "purple",
-    icon: "card",
-    playStore:
-      "https://play.google.com/store/apps/details?id=com.pvp.klikoo.original&hl=en_US",
-  },
-  {
-    category: "Point of Sale",
-    title: "Posy",
-    description:
-      "Online cashier and POS app for phones and tablets. Built shared UI so merchants can run checkout, order queues, and inventory sync on either device.",
-    tags: ["React Native", "Tablet & Phone", "GraphQL", "Realtime Sync"],
-    tone: "amber",
-    icon: "pos",
-    playStore:
-      "https://play.google.com/store/apps/details?id=com.pvp.posy&hl=en_US",
-  },
-  {
-    category: "Agriculture Information",
     title: "SIPINDO",
+    meta: "Agriculture information · Firzil Tech · 2016–2018",
+    tone: "#3F6212",
     description:
-      "Agricultural information app for Indonesian vegetable farmers: planting maps, market prices, weather forecasts, and pest guidance, built for low-bandwidth use.",
-    tags: ["Android Native", "Java", "Offline-First SQLite", "Geo Services"],
-    tone: "lime",
-    icon: "map",
+      "Planting maps, market prices, weather forecasts and pest guidance for vegetable farmers.",
+    role: "One of the client apps I shipped to Google Play at Firzil Tech.",
+    stack: "Native Android · Java",
+    shots: [{ frame: "phone", label: "Screenshot", src: "/images/sipindo.png" }],
     playStore:
-      "https://play.google.com/store/apps/details?id=com.panahmerah.sipindo&hl=en_US",
+      "https://play.google.com/store/apps/details?id=com.panahmerah.sipindo",
   },
 ];
 
-export const selectedWorkIntro =
-  "Production mobile work in agriculture, logistics, public media, and B2B fintech.";
-
-const experienceRaw: ExperienceItem[] = [
+export const experience: ExperienceItem[] = [
   {
-    id: "farmbyte",
-    company: "FarmByte Sdn Bhd",
-    shortName: "FarmByte Sdn Bhd",
-    role: "Mobile Developer · React Native",
+    company: "Synergy Worldwide",
+    role: "Lead Front-End/Mobile Developer · Part-time contract",
+    roleShort: "Lead Front-End/Mobile · Part-time contract",
+    start: "2020-07",
+    summary:
+      "Lead developer for the Kiosk App and four supporting apps. Led most of their rewrites. Also review code, estimate tasks, make architecture decisions, set up CI/CD and define coding standards.",
+    partTime: true,
+  },
+  {
+    company: "Farmbyte Sdn Bhd",
+    role: "Mobile Developer · React Native · Contract",
+    roleShort: "React Native",
     start: "2025-05",
     end: "2025-09",
     summary:
-      "Migrated FarmByte Grow from Android Native to React Native. Improved UI stability and built the Seller Center component library used for marketplace onboarding.",
-    tags: ["Native Migration", "Component Library", "Redux"],
-    indexLabel: "2025",
+      "Maintained FarmByte Grow in a team of 8. Built the onboarding and product management modules for Seller Center, a marketplace app not yet released, and components for the shared internal UI library.",
   },
   {
-    id: "sicepat",
     company: "PT. SiCepat Ekspres Indonesia",
-    shortName: "PT. SiCepat Ekspres",
     role: "Mobile Developer · React Native",
+    roleShort: "React Native",
     start: "2022-04",
     end: "2025-04",
     summary:
-      "Refactored SiCepat Express into Clean Architecture. Improved rendering for dense package lookups under peak load. Shipped Midtrans and Xendit payments plus MoEngage and Insider analytics.",
-    tags: [
-      "Clean Architecture",
-      "Performance Profiling",
-      "Midtrans / Xendit",
-      "Zustand",
-    ],
-    indexLabel: "2022–2025",
+      "Maintained the SiCepat Ekspres app and led its full rewrite. Built the Pick Up app for the daily operations of Sigesit couriers. Integrated payments and customer engagement tools, automated releases with Fastlane and reviewed pull requests.",
   },
   {
-    id: "pvg",
     company: "Pintar Ventura Group",
-    shortName: "Pintar Ventura Group",
     role: "Mobile Developer · React Native",
+    roleShort: "React Native",
     start: "2021-07",
     end: "2022-03",
     summary:
-      "Built Posy POS for phones and tablets with shared layouts across screen sizes. Built Klikoo PPOB with GraphQL dynamic forms so operations could add billers without an app store release.",
-    tags: ["GraphQL Dynamic Forms", "Tablet Responsive UI", "Fintech"],
-    indexLabel: "2021–2022",
+      "Built and maintained two React Native apps with GraphQL and Apollo Client, in a team of 4–5 mobile developers. Klikoo was a bill-payment app. Its GraphQL dynamic forms let new services launch without an app update. Posy was a cashier app with a responsive layout for both tablets and phones.",
   },
   {
-    id: "mdc",
     company: "PT. Media Data Communication",
-    shortName: "PT. Media Data Comm",
     role: "Mobile Developer · Android & React Native",
+    roleShort: "Android & React Native",
     start: "2018-09",
     end: "2021-07",
     summary:
-      "Built Meenistry and Meeva for B2B venue booking. Rewrote Meenistry from Android Native to React Native and set up Azure DevOps CI/CD pipelines.",
-    tags: ["Azure DevOps CI/CD", "Android to RN Migration", "B2B Venue Booking"],
-    indexLabel: "2018–2021",
+      "Built Meenistry, a B2B venue management app, in native Android, then helped rewrite it in React Native for Android and iOS. Built Meeva, an Android and iOS booking app for meeting rooms, ballrooms and co-working spaces. Set up Azure DevOps pipelines.",
   },
   {
-    id: "jukir",
     company: "Jukir.co",
-    shortName: "Jukir.co",
     role: "Android Developer",
+    roleShort: "Android",
     start: "2018-06",
     end: "2018-09",
     summary:
-      "Stabilized the Jukir parking attendant app and built Park Go in Kotlin with Clean Architecture for offline-tolerant parking checks.",
-    tags: ["Kotlin", "Clean Architecture"],
-    indexLabel: "2018",
+      "Fixed crashes and architectural debt in the Jukir app, and built the Park Go parking app in Kotlin.",
   },
   {
-    id: "creoactive",
     company: "PT. Creoactive Cipta Media",
-    shortName: "PT. Creoactive",
     role: "Android Developer",
+    roleShort: "Android",
     start: "2018-02",
     end: "2018-06",
     summary:
-      "Built Truvel Hotel, an in-room Android service app with a locked-down kiosk launcher and Linphone VoIP for guest-to-front-desk calls.",
-    tags: ["Linphone / VoIP", "Android Kiosk Launcher"],
-    indexLabel: "2018",
+      "Built Truvel Hotel, a guest service app with a custom launcher for device lockdown and Linphone VoIP calls to the front desk.",
   },
   {
-    id: "firzil",
     company: "Firzil Tech",
-    shortName: "Firzil Tech",
     role: "Android Developer",
+    roleShort: "Android",
     start: "2015-09",
     end: "2018-02",
     summary:
-      "Shipped multiple Android client apps in Java and Kotlin to the Play Store. Built shared modules and tuned memory and battery use on entry-level devices.",
-    tags: ["Java", "Kotlin", "Play Store Releases"],
-    indexLabel: "2015–2018",
-  },
-];
-
-export const experience = experienceRaw.map((job) => ({
-  ...job,
-  period: formatPeriod(job.start, job.end),
-}));
-
-export const experienceIntro =
-  "Roles, migrations, and releases at companies across Southeast Asia.";
-
-export const technicalFocusIntro = `Skills from ${yearsPlus} years shipping production mobile apps: platforms, architecture, performance, APIs, and release tooling.`;
-
-export const mobilePlatformSkills = [
-  { label: "React Native", detail: "Fabric / New Arch" },
-  { label: "Android / Kotlin", detail: "Coroutines / Flow" },
-  { label: "Flutter", detail: "Dart Engine" },
-  { label: "TypeScript", detail: "Strict Typing" },
-  { label: "Java", detail: "Legacy Interop" },
-  { label: "Native Bridges", detail: "JNI / TurboModules" },
-];
-
-export const architectureSkills = [
-  { label: "Clean Architecture", detail: "Layer Separation" },
-  { label: "Feature Modularization", detail: "Independent Domains" },
-  { label: "Design Systems", detail: "Reusable Atoms" },
-];
-
-export const performanceSkills = [
-  "Memory Leak Detection & GC Tuning",
-  "UI Thread & Frame Rate Profiling",
-  "List virtualization optimization",
-  "Multi-device spec parity",
-];
-
-export const apiSkills = [
-  "GraphQL",
-  "REST API",
-  "Midtrans",
-  "Xendit",
-  "MoEngage",
-  "Insider",
-  "Linphone / VoIP",
-];
-
-export const cicdSkills = [
-  "Azure DevOps Pipelines",
-  "Fastlane App Automations",
-  "Firebase App Distribution",
-  "Jest & Unit Testing Suites",
-];
-
-export const principles: Principle[] = [
-  {
-    title: "Build for Maintainability",
-    body: "I prefer clear architecture and reusable components that make future changes easier rather than optimizing only for the initial release.",
-    tag: "#Architecture",
-    icon: "architecture",
-    tone: "blue",
-  },
-  {
-    title: "Improve Before Rewriting",
-    body: "I enjoy understanding existing codebases, identifying bottlenecks, and improving structure, performance, and reliability incrementally.",
-    tag: "#Pragmatism",
-    icon: "healing",
-    tone: "emerald",
-  },
-  {
-    title: "Measure Performance",
-    body: "Performance issues should be investigated through profiling and real application behavior rather than subjective assumptions.",
-    tag: "#Profiling",
-    icon: "query_stats",
-    tone: "amber",
-  },
-  {
-    title: "Automate Repetitive Work",
-    body: "CI/CD and development tooling should reduce manual work, enforce code checks, and make releases more predictable.",
-    tag: "#Automation",
-    icon: "automation",
-    tone: "purple",
+      "Shipped client Android apps to Google Play using Java, Kotlin and MVP, including SIPINDO. Created shared UI components and utility functions.",
   },
 ];
 
 export const about = {
+  lead: "I'm Didik, a mobile engineer based in Kediri, Indonesia.",
   paragraphs: [
-    `I'm Didik, a Mobile Developer with ${yearsPlus} years of experience building production applications.`,
-    "I started my career in Android native development and later transitioned into React Native, while also delivering projects in Flutter and modern TypeScript-based platforms.",
-    "Day to day I improve legacy codebases, design modular architecture, migrate apps between frameworks, and set up automated testing and release workflows.",
-    "I care most about software architecture, developer experience, and products that stay stable in production.",
+    "I started building native Android apps in 2015. In 2019 I moved to React Native, which is still my main stack, and I've shipped Flutter apps since 2025.",
+    "I've worked on mobile teams at Media Data, Pintar Ventura, SiCepat and Farmbyte. Since 2020 I've also led front-end and mobile work for Synergy Worldwide, and I take on freelance projects that interest me.",
   ],
   education: {
     school: "Politeknik Elektronika Negeri Surabaya",
-    detail: "Informatics Engineering",
-    years: "2012 – 2015",
+    detail: "Diploma III (D3), Informatics Engineering, 2012–2015",
   },
-  engineeringFocus:
-    "Production migrations, native-to-hybrid bridges, offline sync, and tooling that helps teams ship faster.",
+  howIWork: "I lead from the code.",
 };
 
-export const contactIntro =
-  "Open to software engineering roles, React Native / mobile architecture work, or consulting.";
+export const principles: Principle[] = [
+  {
+    title: "Structure by feature",
+    body: "Clean Architecture and feature-first folders keep each feature in one place.",
+  },
+  {
+    title: "Keep logic testable",
+    body: "Business logic stays out of the UI, where unit tests can reach it.",
+  },
+  {
+    title: "Automate releases",
+    body: "CI/CD and Fastlane build and ship the app without manual steps.",
+  },
+  {
+    title: "Reviews and standards",
+    body: "I define the coding standards and pull request workflow, then review against them.",
+  },
+];
 
-export const principlesIntro =
-  "How I make tradeoffs in architecture and pull requests.";
-
-export const tenureBlurb =
-  "Hands-on product engineering since first professional role.";
+export const contact = {
+  headline: "Hiring for a senior mobile role, or need an app built?",
+  body: "Based in Kediri, Indonesia (UTC+7), working remotely with international teams and available for time-zone overlap. I speak Indonesian (native) and English (professional working proficiency).",
+};

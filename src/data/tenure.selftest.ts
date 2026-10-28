@@ -14,10 +14,13 @@ if (formatYearsPlus(11) !== "11+") throw new Error("yearsPlus");
 if (formatTenureLong(t) !== "11 Years, 1 Month") {
   throw new Error(`long: ${formatTenureLong(t)}`);
 }
-if (formatPeriod("2022-04", "2025-04") !== "Apr 2022 – Apr 2025") {
+if (formatPeriod("2022-04", "2025-04") !== "Apr 2022–Apr 2025") {
   throw new Error("period");
 }
-if (formatPeriod("2025-05") !== "May 2025 – Present") {
+if (formatPeriod("2025-05", "2025-09") !== "May–Sep 2025") {
+  throw new Error("same-year period");
+}
+if (formatPeriod("2025-05") !== "May 2025–Present") {
   throw new Error("open period");
 }
 

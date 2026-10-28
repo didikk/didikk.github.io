@@ -1,8 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#111827"/>
-  <path
-    fill="#ffffff"
-    fill-rule="evenodd"
-    d="M9.5 7h6.4c5.5 0 9.6 3.6 9.6 9s-4.1 9-9.6 9H9.5V7zm3.4 3.15v11.7h3c3.7 0 6.2-2.5 6.2-5.85s-2.5-5.85-6.2-5.85h-3z"
-  />
+  <rect width="32" height="32" rx="9" fill="#FF6A3D"/>
+  <g fill="#131313">
+    <path
+      fill-rule="evenodd"
+      transform="translate(7 8.8) scale(.8) translate(-9.5 -7)"
+      d="M9.5 7h6.4c5.5 0 9.6 3.6 9.6 9s-4.1 9-9.6 9H9.5V7zm3.4 3.15v11.7h3c3.7 0 6.2-2.5 6.2-5.85s-2.5-5.85-6.2-5.85h-3z"
+    />
+    <rect x="22.2" y="8.8" width="2.8" height="14.4"/>
+  </g>
 </svg>

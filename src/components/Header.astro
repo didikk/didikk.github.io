@@ -1,184 +1,163 @@
 ---
 import { nav, site } from "../data/site";
+
+const pill =
+  "inline-flex min-h-10 items-center rounded-full border border-night-line px-4 font-medium no-underline transition-colors hover:border-night-text";
 ---
 
-<header
-  class="fixed top-0 right-0 left-0 z-50 bg-surface-card shadow-[0_1px_8px_rgba(0,0,0,0.04)] dark:shadow-[0_1px_8px_rgba(0,0,0,0.35)]"
->
-  <div
-    class="page-container flex h-16 items-center justify-between gap-gutter"
-  >
-    <a class="group flex flex-col justify-center" href="/">
-      <span
-        class="font-headline text-headline-sm text-on-surface transition-colors group-hover:text-secondary"
-      >
-        {site.name}
-      </span>
-      <span
-        class="font-eyebrow text-eyebrow tracking-wider text-text-muted uppercase"
-      >
-        {site.role}
-      </span>
-    </a>
-
-    <nav class="hidden items-center gap-space-lg md:flex" aria-label="Primary">
-      {
-        nav.map((item) => (
-          <a
-            class="nav-link font-body text-body-sm text-on-surface-variant transition-colors hover:text-on-surface"
-            href={item.href}
-          >
-            {item.label}
-          </a>
-        ))
-      }
-    </nav>
-
-    <div class="flex items-center gap-space-sm">
-      <button
-        type="button"
-        id="theme-toggle"
-        class="flex size-9 items-center justify-center rounded-lg bg-badge text-on-surface transition-colors hover:bg-surface-container dark:border dark:border-border-strong dark:bg-surface-elevated dark:text-text-secondary dark:hover:border-secondary dark:hover:text-secondary"
-        aria-label="Toggle color mode"
-      >
+<header id="site-header" class="sticky top-0 z-50 border-b border-transparent bg-night text-night-text">
+  <div class="page-container">
+    <div class="bar flex h-[68px] items-center justify-between gap-4 md:h-[88px]">
+      <a href="#top" class="inline-flex items-center gap-2.5 no-underline md:gap-3">
         <span
-          class="material-symbols-outlined text-[20px]"
-          id="theme-toggle-icon"
-          aria-hidden="true">light_mode</span
+          aria-hidden="true"
+          class="display inline-flex size-8 items-center justify-center rounded-[9px] bg-accent text-[13px] font-extrabold tracking-normal text-night md:size-9 md:rounded-[10px] md:text-[15px]"
+          >DI</span
         >
-      </button>
-      <a
-        class="hidden items-center gap-space-xs rounded-lg bg-primary px-space-md py-space-xs font-body text-body-sm font-medium text-on-primary transition-all hover:opacity-90 sm:inline-flex"
-        href={site.cv}
-      >
-        <span class="material-symbols-outlined text-[18px]">download</span>
-        Download CV
+        <span class="text-[15px] font-semibold md:text-base">{site.name}</span>
       </a>
 
-      <details class="relative md:hidden">
-        <summary
-          class="cursor-pointer list-none rounded-lg border border-border-subtle px-3 py-2 font-body text-body-sm text-on-surface-variant"
-        >
-          Menu
-        </summary>
-        <div
-          class="absolute right-0 mt-space-sm w-48 rounded-xl border border-border-subtle bg-surface-card p-space-md shadow-sm"
-        >
-          <div class="flex flex-col gap-space-sm">
-            {
-              nav.map((item) => (
-                <a
-                  class="nav-link font-body text-body-sm text-on-surface-variant hover:text-on-surface"
-                  href={item.href}
-                >
-                  {item.label}
-                </a>
-              ))
-            }
-            <a
-              class="font-body text-body-sm text-on-surface-variant hover:text-on-surface"
-              href={site.cv}
-            >
-              Download CV
+      <nav aria-label="Primary" class="desktop-nav hidden items-center gap-x-7 text-[15px] md:flex">
+        {
+          nav.map((item) => (
+            <a href={item.href} class="nav-link relative py-2 text-night-muted no-underline transition-colors hover:text-night-text">
+              {item.label}
             </a>
-          </div>
+          ))
+        }
+        <a href={site.cv} class={pill} download>Download CV</a>
+      </nav>
+
+      <button
+        type="button"
+        id="menu-toggle"
+        aria-expanded="false"
+        aria-controls="menu-panel"
+        class="min-h-11 min-w-11 rounded-full border border-night-line px-4 text-sm md:hidden"
+      >
+        Menu
+      </button>
+    </div>
+
+    <div id="menu-panel" class="menu-panel md:hidden">
+      <nav aria-label="Primary" class="overflow-hidden">
+        <div class="flex flex-col border-t border-night-rule pb-4">
+          {
+            nav.map((item) => (
+              <a href={item.href} class="nav-link flex min-h-12 items-center border-b border-night-rule text-lg no-underline">
+                {item.label}
+              </a>
+            ))
+          }
+          <a href={site.cv} class={`${pill} mt-4 self-start`} download>Download CV</a>
         </div>
-      </details>
+      </nav>
     </div>
   </div>
 </header>
 
 <style>
-  details summary::-webkit-details-marker {
-    display: none;
+  #site-header {
+    transition: border-color 0.2s;
   }
 
-  .nav-link.is-active {
-    color: var(--color-secondary);
-    font-weight: 600;
+  #site-header[data-scrolled] {
+    border-color: var(--color-night-rule);
+  }
+
+  /* Condense once the page moves, so the sticky bar takes less room. */
+  .bar {
+    transition: height 0.25s ease;
+  }
+
+  @media (min-width: 48rem) {
+    [data-scrolled] .bar {
+      height: 68px;
+    }
+  }
+
+  /* Current section: text brightens and an accent rule draws in under the link. */
+  .nav-link[aria-current="true"] {
+    color: var(--color-night-text);
+  }
+
+  .desktop-nav .nav-link::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 2px;
+    border-radius: 1px;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+
+  .desktop-nav .nav-link[aria-current="true"]::after {
+    transform: scaleX(1);
+  }
+
+  .menu-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition:
+      grid-template-rows 0.25s ease,
+      visibility 0.25s;
+  }
+
+  [data-open] .menu-panel {
+    grid-template-rows: 1fr;
+    visibility: visible;
   }
 </style>
 
 <script>
-  const THEME_KEY = "didik_theme";
-  const themeIcon = document.getElementById("theme-toggle-icon");
+  const header = document.getElementById("site-header");
+  const toggle = document.getElementById("menu-toggle");
 
-  function isDark() {
-    return document.documentElement.classList.contains("dark");
+  function setOpen(open: boolean) {
+    header?.toggleAttribute("data-open", open);
+    toggle?.setAttribute("aria-expanded", String(open));
+    if (toggle) toggle.textContent = open ? "Close" : "Menu";
   }
 
-  function syncThemeIcon() {
-    if (themeIcon) {
-      themeIcon.textContent = isDark() ? "dark_mode" : "light_mode";
-    }
-  }
-
-  function setTheme(dark: boolean) {
-    document.documentElement.classList.toggle("dark", dark);
-    localStorage.setItem(THEME_KEY, dark ? "dark" : "light");
-    syncThemeIcon();
-  }
-
-  syncThemeIcon();
-
-  document.getElementById("theme-toggle")?.addEventListener("click", () => {
-    setTheme(!isDark());
+  toggle?.addEventListener("click", () => setOpen(!header?.hasAttribute("data-open")));
+  header?.querySelectorAll("#menu-panel a").forEach((link) => {
+    link.addEventListener("click", () => setOpen(false));
   });
 
+  const onScroll = () => header?.toggleAttribute("data-scrolled", window.scrollY > 8);
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  // Mark the nav link for the section crossing the middle of the viewport.
   const links = [...document.querySelectorAll<HTMLAnchorElement>(".nav-link")];
-  const sectionIds = [
-    ...new Set(
-      links
-        .map((link) => link.getAttribute("href"))
-        .filter((href): href is string => !!href?.startsWith("#"))
-        .map((href) => href.slice(1)),
-    ),
-  ];
+  const sections = [...new Set(links.map((a) => a.hash.slice(1)))]
+    .map((id) => document.getElementById(id))
+    .filter((el): el is HTMLElement => !!el);
 
-  function setActive(id: string) {
-    links.forEach((link) => {
-      const isActive = link.getAttribute("href") === `#${id}`;
-      link.classList.toggle("is-active", isActive);
-    });
-  }
-
-  function updateActive() {
-    const offset = 96;
-    const lastId = sectionIds.at(-1) ?? "";
-    const last = document.getElementById(lastId);
-    const lastTop = last?.getBoundingClientRect().top ?? Infinity;
-    const scrolledToBottom =
-      window.innerHeight + window.scrollY >=
-      document.documentElement.scrollHeight - 8;
-
-    if (scrolledToBottom || lastTop <= window.innerHeight * 0.55) {
-      setActive(lastId);
-      return;
-    }
-
-    const first = document.getElementById(sectionIds[0]);
-    if (first && first.getBoundingClientRect().top > offset + 40) {
-      setActive("");
-      return;
-    }
-
-    let current = sectionIds[0] ?? "";
-    for (const id of sectionIds) {
-      const section = document.getElementById(id);
-      if (section && section.getBoundingClientRect().top <= offset) {
-        current = id;
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        links.forEach((a) =>
+          a.hash === `#${entry.target.id}` ? a.setAttribute("aria-current", "true") : a.removeAttribute("aria-current"),
+        );
       }
-    }
-    setActive(current);
+    },
+    { rootMargin: "-45% 0px -50% 0px" },
+  );
+  sections.forEach((s) => observer.observe(s));
+
+  // Leaving the top of the page through the hero clears the marker.
+  const hero = document.getElementById("top");
+  if (hero) {
+    new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) links.forEach((a) => a.removeAttribute("aria-current"));
+      },
+      { rootMargin: "-45% 0px -50% 0px" },
+    ).observe(hero);
   }
-
-  document.querySelectorAll("header details a").forEach((link) => {
-    link.addEventListener("click", () => {
-      link.closest("details")?.removeAttribute("open");
-    });
-  });
-
-  window.addEventListener("scroll", updateActive, { passive: true });
-  window.addEventListener("hashchange", updateActive);
-  updateActive();
 </script>

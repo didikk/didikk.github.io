@@ -1,126 +1,52 @@
 ---
 import { hero, site } from "../data/site";
+
+const ghost =
+  "inline-flex min-h-[52px] items-center justify-center rounded-full px-[26px] no-underline transition-opacity hover:opacity-80";
+
+const phone =
+  "rise rise-device absolute top-16 box-border h-[200px] w-24 overflow-hidden rounded-[17px] border-[6px] border-frame sm:top-[110px] sm:h-[280px] sm:w-[134px] sm:rounded-[24px] lg:top-[130px] lg:h-[470px] lg:w-[230px] lg:rounded-[42px] lg:border-8";
+const img = "size-full object-cover object-top";
 ---
 
-<section class="relative w-full pt-12 pb-8 md:pt-16 md:pb-10">
-  <div
-    class="pointer-events-none absolute top-12 left-1/2 -z-10 h-64 w-3/4 max-w-3xl -translate-x-1/2 rounded-full bg-surface-container-high/40 blur-3xl dark:bg-surface-elevated/20"
-  >
-  </div>
-  <div
-    class="page-container relative flex w-full flex-col items-start gap-space-md md:gap-space-lg"
-  >
-    <div class="flex flex-wrap items-center gap-space-sm md:gap-space-md">
-      <div
-        class="inline-flex items-center gap-2 rounded-full bg-surface-card px-3 py-1 shadow-sm dark:bg-surface-elevated"
-      >
-        <span class="relative flex h-2 w-2">
-          <span
-            class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75"
-          ></span>
-          <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"
-          ></span>
+<section id="top" class="overflow-hidden bg-night text-night-text">
+  <div class="page-container">
+    <div class="rise flex flex-col gap-[22px] pt-10 md:gap-8 md:pt-[88px]">
+      <p class="flex flex-wrap items-center gap-x-5 gap-y-2.5 font-mono text-xs text-night-muted md:text-[13px]">
+        <span class="inline-flex items-center gap-2 rounded-full border border-night-pill px-3 py-1.5">
+          <span aria-hidden="true" class="status-dot size-[7px] rounded-full bg-accent"></span>
+          {hero.status}
         </span>
-        <span
-          class="font-eyebrow text-eyebrow tracking-wider text-on-surface uppercase"
-        >
-          {site.availability}
-        </span>
+        <span>{hero.role}</span>
+        <span>{hero.location}</span>
+      </p>
+      <h1 class="display max-w-[13ch] text-[clamp(44px,7.6vw,116px)] leading-[0.94]">
+        I keep mobile apps <span class="text-accent">maintainable</span>, from first release to full rewrite.
+      </h1>
+      <div class="flex flex-wrap items-end justify-between gap-8">
+        <p class="max-w-[54ch] text-base text-night-muted md:text-[19px] md:leading-relaxed">{hero.body}</p>
+        <div class="flex w-full flex-col gap-2.5 sm:w-auto sm:flex-row sm:flex-wrap sm:gap-3">
+          <a href="#work" class={`${ghost} bg-accent font-semibold text-night`}>See selected work</a>
+          <a href={`mailto:${site.email}`} class={`${ghost} border border-night-line font-medium`}>Email me</a>
+        </div>
       </div>
-      <span class="font-label text-label-code text-text-muted">·</span>
-      <span
-        class="font-eyebrow text-eyebrow tracking-widest text-text-secondary uppercase"
-      >
-        {hero.eyebrow}
-      </span>
     </div>
-
-    <h1
-      class="w-full max-w-4xl font-display text-headline-lg leading-[1.08] tracking-tight text-on-surface md:text-display"
-    >
-      {hero.headline}
-    </h1>
-
-    <p class="w-full max-w-3xl font-body text-body-lg text-text-secondary">
-      {hero.body}
-    </p>
 
     <div
-      class="mt-1 flex w-full items-center overflow-x-auto rounded-xl bg-surface-container-low px-4 py-2.5 text-on-surface shadow-sm dark:bg-surface-elevated/60"
+      aria-hidden="true"
+      class="relative -mx-1.5 mt-12 -mb-[100px] h-[300px] sm:mx-auto sm:-mb-[130px] sm:h-[400px] sm:max-w-[680px] lg:mx-auto lg:mt-24 lg:-mb-[150px] lg:h-[600px] lg:max-w-[1080px]"
     >
       <div
-        class="flex items-center gap-3 font-label text-label-code whitespace-nowrap"
+        class="rise rise-device absolute inset-x-0 top-0 mx-auto box-content aspect-[1194/834] w-[240px] overflow-hidden rounded-[18px] border-[8px] border-frame bg-[#001E61] sm:w-[460px] sm:rounded-[26px] sm:border-[12px] lg:inset-x-[170px] lg:w-auto lg:rounded-[36px] lg:border-[16px]"
+        style="--delay:250ms"
       >
-        {
-          hero.chips.map((chip, i) => (
-            <>
-              {i > 0 ? <span class="text-text-muted">/</span> : null}
-              <span
-                class={
-                  i === 0
-                    ? "font-semibold text-secondary"
-                    : "text-on-surface"
-                }
-              >
-                {chip}
-              </span>
-            </>
-          ))
-        }
-        <span class="text-text-muted">/</span>
-        <span class="flex items-center gap-1 text-text-secondary">
-          <span class="material-symbols-outlined text-[16px]">location_on</span>
-          {hero.location}
-        </span>
+        <img src="/images/kiosk.png" alt="" fetchpriority="high" class={img} />
       </div>
-    </div>
-
-    <div class="flex w-full flex-wrap items-center gap-space-sm pt-2">
-      <a
-        class="inline-flex items-center gap-2 rounded-xl bg-primary px-space-lg py-3 font-body text-body-sm font-medium text-on-primary shadow-sm transition-all hover:opacity-90"
-        href="#work"
-      >
-        {hero.primaryCta}
-        <span class="material-symbols-outlined text-[18px]">arrow_downward</span>
-      </a>
-      <a
-        class="inline-flex items-center gap-2 rounded-xl bg-surface-card px-space-lg py-3 font-body text-body-sm font-medium text-on-surface shadow-sm transition-all hover:bg-surface-container-low dark:bg-surface-elevated dark:hover:bg-surface-card"
-        href="#skills"
-      >
-        {hero.secondaryCta}
-        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-      </a>
-      <div class="flex items-center gap-2 pl-2">
-        {
-          site.linkedin && (
-            <a
-              class="flex size-10 items-center justify-center rounded-xl bg-surface-card text-on-surface shadow-sm transition-colors hover:text-secondary dark:bg-surface-elevated"
-              href={site.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              title="LinkedIn"
-            >
-              <svg class="size-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.44a1.63 1.63 0 1 0 0 3.26 1.63 1.63 0 0 0 0-3.26Z" />
-              </svg>
-            </a>
-          )
-        }
-        <a
-          class="flex size-10 items-center justify-center rounded-xl bg-surface-card text-on-surface shadow-sm transition-colors hover:text-secondary dark:bg-surface-elevated"
-          href={site.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          title="GitHub"
-        >
-          <svg class="size-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2Z"
-            />
-          </svg>
-        </a>
+      <div class={`${phone} left-0 bg-[#C62828]`} style="--tilt:-4deg;--delay:330ms">
+        <img src="/images/sicepat1.jpeg" alt="" class={img} />
+      </div>
+      <div class={`${phone} right-0 bg-[#1F6B45]`} style="--tilt:4deg;--delay:410ms">
+        <img src="/images/farmbyte1.jpeg" alt="" class={img} />
       </div>
     </div>
   </div>

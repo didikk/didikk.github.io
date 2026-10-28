@@ -1,22 +1,26 @@
 ---
-import { projects, selectedWorkIntro } from "../data/site";
+import { projects, workIntro } from "../data/site";
+import FeaturedProject from "./FeaturedProject.astro";
 import ProjectCard from "./ProjectCard.astro";
+
+const featured = projects.filter((p) => p.featured);
+const rest = projects.filter((p) => !p.featured);
 ---
 
-<section class="page-container pt-8 pb-16 md:pt-12 md:pb-24" id="work">
-  <div class="mb-10 flex flex-col gap-3">
-    <div class="flex items-center gap-2">
-      <span class="h-px w-6 bg-secondary"></span>
-      <span class="section-eyebrow">Portfolio</span>
-    </div>
-    <h2 class="font-headline text-headline-lg tracking-tight text-on-surface">
-      Selected Work
+<section id="work" class="flex scroll-mt-6 flex-col gap-5 pt-[88px] md:gap-8 md:pt-[140px]">
+  <div class="mb-2 flex flex-wrap items-end justify-between gap-x-12 gap-y-4 md:mb-4">
+    <h2 class="display text-[clamp(48px,6vw,88px)] leading-[0.95]">
+      Selected work<sup
+        class="ml-2 align-super font-mono text-[13px] font-normal tracking-normal text-muted md:text-base"
+        >{projects.length}</sup
+      >
     </h2>
-    <p class="max-w-2xl font-body text-body-md text-text-secondary">
-      {selectedWorkIntro}
-    </p>
+    <p class="max-w-[40ch] text-base text-body md:text-[17px]">{workIntro}</p>
   </div>
-  <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-    {projects.map((project) => <ProjectCard {...project} />)}
+
+  {featured.map((project, i) => <FeaturedProject project={project} flip={i % 2 === 1} />)}
+
+  <div class="grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-x-7 gap-y-10">
+    {rest.map((project) => <ProjectCard project={project} />)}
   </div>
 </section>

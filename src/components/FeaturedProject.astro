@@ -1,0 +1,59 @@
+---
+import type { Project } from "../data/types";
+import DeviceMock from "./DeviceMock.astro";
+import StoreLinks from "./StoreLinks.astro";
+
+interface Props {
+  project: Project;
+  /** Put the devices on the left. */
+  flip?: boolean;
+}
+
+const { project, flip = false } = Astro.props;
+const pad = "clamp(22px,4vw,56px)";
+---
+
+<article
+  class:list={[
+    "flex flex-wrap gap-10 overflow-hidden rounded-3xl text-white md:rounded-[28px]",
+    flip && "flex-row-reverse",
+  ]}
+  style={`background:${project.tone};padding:${pad} ${pad} 0`}
+>
+  <div class="flex min-w-0 flex-[1_1_380px] flex-col gap-5" style={`padding-bottom:${pad}`}>
+    <p class="font-mono text-xs md:text-[13px]">{project.meta}</p>
+    <h3 class="display text-[clamp(36px,4.6vw,64px)] leading-[0.98] tracking-[-0.04em]">
+      {project.title}
+    </h3>
+    <p class="max-w-[42ch] text-base md:text-lg">{project.description}</p>
+    {
+      project.highlights && (
+        <ul class="flex flex-col text-sm md:text-[15px]">
+          {project.highlights.map((item) => (
+            <li class="border-t border-white/35 py-2.5 last:border-b">{item}</li>
+          ))}
+        </ul>
+      )
+    }
+    {
+      project.role && (
+        <p class="max-w-[46ch] text-[15px]">
+          <span class="font-semibold">My role:</span> {project.role}
+        </p>
+      )
+    }
+    <p class="font-mono text-xs md:text-[13px]">{project.stack}</p>
+    <StoreLinks playStore={project.playStore} appStore={project.appStore} variant="pill" />
+  </div>
+  <div
+    aria-hidden="true"
+    data-observe
+    class="device-stage flex min-w-0 flex-[1_1_420px] items-end justify-center gap-5 md:min-h-[440px]"
+  >
+    {
+      project.shots.map((shot, i) => (
+        <DeviceMock shot={shot} size="feature" tall={flip ? i === 0 : i === 1} />
+      ))
+    }
+  </div>
+</article>
