@@ -55,7 +55,7 @@ export const platforms: Platform[] = [
 ];
 
 export const workIntro =
-  "Apps for retail, logistics, agriculture, government, public media, fintech and small businesses. They run on phones, tablets, in-store kiosks, a TV display and the web.";
+  "Apps for retail, logistics, agriculture, government, public media and small businesses. They run on phones, tablets, in-store kiosks, a TV display and the web.";
 
 const synergy = "#001E61";
 
@@ -205,18 +205,6 @@ export const projects: Project[] = [
     appStore: "https://apps.apple.com/id/app/rri-news/id6504948692",
   },
   {
-    title: "Klikoo",
-    meta: "Fintech · Pintar Ventura · 2021–2022",
-    tone: "#5B3FA8",
-    description:
-      "Bill-payment app. GraphQL dynamic forms let new services launch without an app update.",
-    role: "One of 4–5 mobile developers who built and maintained the app.",
-    stack: "React Native · GraphQL · Apollo Client",
-    shots: [{ frame: "phone", label: "Screenshot" }],
-    playStore:
-      "https://play.google.com/store/apps/details?id=com.pvp.klikoo.original",
-  },
-  {
     title: "SIPINDO",
     meta: "Agriculture information · Firzil Tech · 2016–2018",
     tone: "#3F6212",
@@ -265,7 +253,7 @@ export const experience: ExperienceItem[] = [
     start: "2021-07",
     end: "2022-03",
     summary:
-      "Built and maintained Klikoo and Posy, in a team of 4–5 mobile developers.",
+      "Built and maintained two React Native apps with GraphQL and Apollo Client, in a team of 4–5 mobile developers. Klikoo was a bill-payment app. Its GraphQL dynamic forms let new services launch without an app update. Posy was a cashier app with a responsive layout for both tablets and phones.",
   },
   {
     company: "PT. Media Data Communication",
